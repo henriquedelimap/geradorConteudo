@@ -22,7 +22,7 @@ function App() {
         <Grid container alignItems='center' justifyContent='space-between' sx={{ width: '100vw', height: '100vh' }}>
 
           <Grid item xs={12} container sx={{ width: '100vw', height: '50vh', overflow: 'hidden' }} justifyContent='center' alignItems='center'>
-            <Typography variant={'h6'} fontWeight={300} fontFamily='Outfit'>
+            <Typography sx={{p: {lg: 2, md: 2, xs: 1}}} align={'center'} variant={'h6'} fontWeight={300} fontFamily='Outfit'>
               {gerado === 'inicial' ? <LapsooLogo /> : gerado === undefined ? '🤖​' : gerado}
             </Typography>
           </Grid>

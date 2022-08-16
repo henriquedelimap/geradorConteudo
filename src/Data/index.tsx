@@ -27,4 +27,6 @@ export const value = [
     'as vantagens de alugar conosco',
     'as vantagens de comprar seu imóvel conosco',
     'as vantagens de comprar seu lote conosco',
+    'o que observar antes de investir em um imóvel?',
+    'quanto de renda pode ser comprometido com financiamento?'
 ]
