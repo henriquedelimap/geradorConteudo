@@ -1,34 +1,87 @@
 import { Button, Grid, IconButton, OutlinedInput, Typography, Stack, Box, Paper } from '@mui/material'
 import styled from "@emotion/styled";
-import {MdReplay} from 'react-icons/md'
+import { MdReplay } from 'react-icons/md'
 import { useEffect, useState } from 'react'
 import { LapsooLogo, OOLogo } from './OOTECHNOLOGY'
 import { value } from './Data'
 function App() {
-  const [gerado, setGerado] = useState('inicial')  
-  						
+  const [gerado, setGerado] = useState('inicial')
+
   const aleatorio = Math.floor(Math.random() * value.length)
-  
-  
+
   function handleConteudo() {
     setGerado(prev => prev === value[aleatorio] ? value[aleatorio + 1] : value[aleatorio])
   }
-  
 
   return (
-    <Box sx={{ position: 'relative' }}>
-      <Paper elevation={12} sx={{ position: 'relative', zIndex: '1', borderRadius: '0' }}>
+    <Box
+      sx={{
+        position: 'relative'
+      }}>
+      <Paper
+        elevation={12}
+        sx={{
+          position: 'relative',
+          zIndex: '1',
+          borderRadius: '0'
+        }}>
 
+        <Grid
+          container
+          alignItems='center'
+          justifyContent='space-between'
+          sx={{
+            width: '100vw',
+            height: '100vh'
+          }}>
 
-        <Grid container alignItems='center' justifyContent='space-between' sx={{ width: '100vw', height: '100vh' }}>
+          {/* CONTEÚDO */}
 
-          <Grid item xs={12} container sx={{ width: '100vw', height: '50vh', overflow: 'hidden' }} justifyContent='center' alignItems='center'>
-            <Typography sx={{p: {lg: 2, md: 2, xs: 1}}} align={'center'} variant={'h6'} fontWeight={300} fontFamily='Outfit'>
-              {gerado === 'inicial' ? <LapsooLogo /> : gerado === undefined ? '🤖​' : gerado.toLowerCase()}
+          <Grid
+            item
+            xs={12}
+            container
+            sx={{
+              width: '100vw',
+              height: '50vh',
+              overflow: 'hidden'
+            }}
+            justifyContent='center'
+            alignItems='center'
+          >
+            <Typography
+              sx={{
+                p: {
+                  lg: 2,
+                  md: 2,
+                  xs: 1
+                }
+              }}
+              align={'center'}
+              variant={'h6'}
+              fontWeight={300}
+              fontFamily='Outfit'
+            >
+              {
+                gerado === 'inicial'
+                  ? <LapsooLogo />
+                  : gerado === undefined
+                    ? '🤖​'
+                    : gerado.toLowerCase()}
             </Typography>
           </Grid>
 
-          <Grid item container xs={12} alignItems='center' justifyContent='center' sx={{height: '50vh' }} >
+          {/* GERAR CONTEÚDO */}
+
+          <Grid
+            item
+            container
+            xs={12}
+            alignItems='center'
+            justifyContent='center'
+            sx={{
+              height: '50vh'
+            }} >
             <Button onClick={handleConteudo}>
               <Typography fontFamily='Outfit'>
                 gerar conteúdo
@@ -38,17 +91,24 @@ function App() {
 
         </Grid>
       </Paper>
-      <Sticky bottom={0} index={-10}>
 
-        <Stack justifyContent='center' alignItems='center' sx={{ height: '50vh', width: '100%' }}>
+      {/* LOGO OOTECHNOLOGY */}
+
+      <Sticky
+        bottom={0}
+        index={-10}>
+        <Stack
+          justifyContent='center'
+          alignItems='center'
+          sx={{
+            height: '50vh',
+            width: '100%'
+
+          }}>
           <OOLogo />
         </Stack>
-
       </Sticky>
     </Box>
-
-
-
   )
 }
 
