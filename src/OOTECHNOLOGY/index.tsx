@@ -34,6 +34,6 @@ const Vermelho = styled('p')(({ }) => ({
 }))
 const AzulLapsoo = styled('p')(({ }) => ({
     color: '#0066cc',
-    letterSpacing: -6.4,
-    paddingRight: 2.4
+    letterSpacing: -6,
+    paddingRight: 1.2
 }))
