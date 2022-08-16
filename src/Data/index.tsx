@@ -35,7 +35,7 @@ export const value = [
     'Quão importante é a análise documental?',
     'diga adeus ao aluguel, seu imóvel está aqui',
     'você mais perto de realizar o sonho da casa própria',
-    'você mais prócimo de concretizar o sonho da casa própria',
+    'você mais próximo de concretizar o sonho da casa própria',
     'eii, proprietário! Seu imóvel está vazio?',
     'sinta o prazer de estar no seu cantinho',
     'dicas para fazer um bom financiamento',
