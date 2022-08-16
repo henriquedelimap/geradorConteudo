@@ -3,23 +3,9 @@ import styled from "@emotion/styled";
 import {MdReplay} from 'react-icons/md'
 import { useEffect, useState } from 'react'
 import { LapsooLogo, OOLogo } from './OOTECHNOLOGY'
+import { value } from './Data'
 function App() {
-  const [gerado, setGerado] = useState('inicial')
-  const [value, setValue] = useState([
-    'CET(custo efetivo total)', 
-    'taxa de corretagem', 
-    'Escritura pública', 
-    'Resgistro de imóveis',
-    'ITBI',
-    'IPTU',
-    'Taxa de cessão de contrato',
-    'Taxas cartóriais',
-    'Taxa cobrada durante a obra',
-    'Análise documental',
-    'Financiamento reprovado?',
-    'Autônomo pode financiar?',
-    'Composição de renda'
-  ])
+  const [gerado, setGerado] = useState('inicial')  
   						
   const aleatorio = Math.floor(Math.random() * value.length)
   

@@ -1,0 +1,23 @@
+export const value = [
+    'CET(custo efetivo total)', 
+    'taxa de corretagem', 
+    'Escritura pública', 
+    'Resgistro de imóveis',
+    'ITBI',
+    'IPTU',
+    'Taxa de cessão de contrato',
+    'Taxas cartóriais',
+    'Taxa cobrada durante a obra',
+    'Análise documental',
+    'Financiamento reprovado?',
+    'Autônomo pode financiar?',
+    'Composição de renda para financiar',
+    'já pensou em investir em lotes?',
+    'a persistência é o caminho para o sucesso',
+    'dicas para economizar',
+    '3 motivos para investir em lotes',
+    'por que investir em lotes?',
+    'posso usar o FGTS para financiar?',
+    'dúvidas sobre Composição de renda?',
+    'loteamento perfeito para morar e ideal para invesitr'
+]
