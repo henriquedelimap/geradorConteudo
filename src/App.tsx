@@ -13,6 +13,7 @@ function App() {
   function handleConteudo() {
     setGerado(prev => prev === value[aleatorio] ? value[aleatorio + 1] : value[aleatorio])
   }
+  
 
   return (
     <Box sx={{ position: 'relative' }}>
@@ -39,7 +40,7 @@ function App() {
       </Paper>
       <Sticky bottom={0} index={-10}>
 
-        <Stack justifyContent='center' alignItems='center' sx={{ height: '40vh', width: '100%' }}>
+        <Stack justifyContent='center' alignItems='center' sx={{ height: '50vh', width: '100%' }}>
           <OOLogo />
         </Stack>
 
