@@ -1,46 +1,55 @@
-import { Button, Grid, IconButton, OutlinedInput, Typography, Stack } from '@mui/material'
+import { Button, Grid, IconButton, OutlinedInput, Typography, Stack, Box, Paper } from '@mui/material'
 import styled from "@emotion/styled";
-
-import { Container } from '@mui/system'
+import {MdReplay} from 'react-icons/md'
 import { useEffect, useState } from 'react'
-import { MdAdd } from 'react-icons/md'
-import { OOLogo } from './OOTECHNOLOGY'
+import { LapsooLogo, OOLogo } from './OOTECHNOLOGY'
 function App() {
-  const [newValue, setNewValue] = useState('')
   const [gerado, setGerado] = useState('inicial')
   const [value, setValue] = useState([
-    'fgts', 'financiamento modaliade fgts', 'compre casa', 'compre imovel'
+    'fgts', 
+    'financiamento modaliade fgts', 
+    'compre casa', 
+    'compre imovel'
   ])
 
   const aleatorio = Math.floor(Math.random() * value.length)
+  
+  
   function handleConteudo() {
     setGerado(prev => prev === value[aleatorio] ? value[aleatorio + 1] : value[aleatorio])
   }
 
-
   return (
-    <Grid container alignItems='center' justifyContent='space-between' sx={{ width: '100vw', height: '100vh' }}>
-      <Grid item xs={12} container sx={{ width: '100%', overflow: 'hidden' }} justifyContent='center' alignItems='center'>
-        <Typography>
-          {gerado === 'inicial' ? 'gerador de conteúdo' : gerado}
-        </Typography>
-      </Grid>
-      <Grid item container xs={12} alignItems='center' justifyContent='center' sx={{ width: '100vw' }} >
-        <Button onClick={handleConteudo}>
-          <Typography>
-            gerar conteúdo
-          </Typography>
-        </Button>
-      </Grid>
+    <Box sx={{ position: 'relative' }}>
+      <Paper elevation={12} sx={{ position: 'relative', zIndex: '1', borderRadius: '0' }}>
 
 
+        <Grid container alignItems='center' justifyContent='space-between' sx={{ width: '100vw', height: '100vh' }}>
 
-      <Grid  item container xs={12} alignItems='center' justifyContent='end'>
-        <OOLogo />
-      </Grid>
+          <Grid item xs={12} container sx={{ width: '100vw', height: '50vh', overflow: 'hidden' }} justifyContent='center' alignItems='center'>
+            <Typography variant={'h6'} fontWeight={300} fontFamily='Outfit'>
+              {gerado === 'inicial' ? <LapsooLogo /> : gerado === undefined ? '🤖​' : gerado}
+            </Typography>
+          </Grid>
 
-    </Grid>
+          <Grid item container xs={12} alignItems='center' justifyContent='center' sx={{height: '50vh' }} >
+            <Button onClick={handleConteudo}>
+              <Typography fontFamily='Outfit'>
+                gerar conteúdo
+              </Typography>
+            </Button>
+          </Grid>
 
+        </Grid>
+      </Paper>
+      <Sticky bottom={0} index={-10}>
+
+        <Stack justifyContent='center' alignItems='center' sx={{ height: '40vh', width: '100%' }}>
+          <OOLogo />
+        </Stack>
+
+      </Sticky>
+    </Box>
 
 
 
