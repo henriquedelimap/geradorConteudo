@@ -24,7 +24,7 @@ function App() {
 
           <Grid item xs={12} container sx={{ width: '100vw', height: '50vh', overflow: 'hidden' }} justifyContent='center' alignItems='center'>
             <Typography sx={{p: {lg: 2, md: 2, xs: 1}}} align={'center'} variant={'h6'} fontWeight={300} fontFamily='Outfit'>
-              {gerado === 'inicial' ? <LapsooLogo /> : gerado === undefined ? '🤖​' : gerado}
+              {gerado === 'inicial' ? <LapsooLogo /> : gerado === undefined ? '🤖​' : gerado.toLowerCase()}
             </Typography>
           </Grid>
 
