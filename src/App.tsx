@@ -6,12 +6,21 @@ import { LapsooLogo, OOLogo } from './OOTECHNOLOGY'
 function App() {
   const [gerado, setGerado] = useState('inicial')
   const [value, setValue] = useState([
-    'fgts', 
-    'financiamento modaliade fgts', 
-    'compre casa', 
-    'compre imovel'
+    'CET(custo efetivo total)', 
+    'taxa de corretagem', 
+    'Escritura pública', 
+    'Resgistro de imóveis',
+    'ITBI',
+    'IPTU',
+    'Taxa de cessão de contrato',
+    'Taxas cartóriais',
+    'Taxa cobrada durante a obra',
+    'Análise documental',
+    'Financiamento reprovado?',
+    'Autônomo pode financiar?',
+    'Composição de renda'
   ])
-
+  						
   const aleatorio = Math.floor(Math.random() * value.length)
   
   
