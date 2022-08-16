@@ -4,7 +4,7 @@ import { Stack, Typography } from "@mui/material"
 
 export const OOLogo = () => {
     return (
-        <Typography fontWeight={200} fontFamily='Outfit' variant={'h6'}>
+        <Typography fontWeight={300} fontFamily='Outfit' variant={'h6'}>
 
         <Stack sx={{ width: '100%' }} direction='row' justifyContent="center" alignItems='center'>
             <Azul>oo</Azul><Vermelho>tech</Vermelho>nology
