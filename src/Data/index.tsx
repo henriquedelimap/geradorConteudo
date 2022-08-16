@@ -19,5 +19,12 @@ export const value = [
     'por que investir em lotes?',
     'posso usar o FGTS para financiar?',
     'dúvidas sobre Composição de renda?',
-    'loteamento perfeito para morar e ideal para invesitr'
+    'loteamento perfeito para morar e ideal para invesitir',
+    'antes alugar seu apê, veja essas dicas',
+    'financiamento ou consórcio imobiliário?',
+    'nós temos o imóvel ideal para você',
+    'as vantagens de alugar seu imóvel conosco',
+    'as vantagens de alugar conosco',
+    'as vantagens de comprar seu imóvel conosco',
+    'as vantagens de comprar seu lote conosco',
 ]
