@@ -154,7 +154,7 @@ function App() {
   return (
     <Box
       sx={{
-        position: 'relative'
+        position: 'relative', overflow: 'hidden'
       }}>
       <Paper
         elevation={12}
