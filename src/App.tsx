@@ -154,11 +154,12 @@ function App() {
   return (
     <Box
       sx={{
-        position: 'relative', overflow: 'hidden'
+        position: 'relative'
       }}>
       <Paper
         elevation={12}
         sx={{
+          overflow: 'hidden',
           position: 'relative',
           zIndex: '1',
           borderRadius: '0'
