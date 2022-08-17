@@ -1,4 +1,4 @@
-import { Button, Grid, IconButton, OutlinedInput, Typography, Stack, Box, Paper, Chip, ToggleButtonGroup, ToggleButton } from '@mui/material'
+import { Button, Grid, IconButton, OutlinedInput, Typography, Stack, Box, Paper, Chip, ToggleButtonGroup, ToggleButton, Select, SelectChangeEvent, MenuItem, ListItemText, FormControl, InputLabel } from '@mui/material'
 import styled from "@emotion/styled";
 import { MdDone, MdReplay } from 'react-icons/md'
 import { useEffect, useState } from 'react'
@@ -10,7 +10,7 @@ function App() {
   const [values, setValues] = useState<string[]>([''])
   const aleatorio = Math.floor(Math.random() * values.length)
 
-  const filtros = ['todos','financiamento', 'institucional', 'lote', 'casa', 'ape']
+  const filtros = ['todos', 'financiamento', 'institucional', 'lote', 'casa', 'ape']
 
   useEffect(() => {
     const totalValues = [...ape, ...institucional, ...casa, ...lote]
@@ -45,8 +45,8 @@ function App() {
   function handleConteudo() {
     setGerado(prev => prev === values[aleatorio] ? values[aleatorio + 1] : values[aleatorio])
   }
-  function handleChange(event: React.MouseEvent<HTMLElement>, toggleValue: string) {
-    setToggleValue(toggleValue)
+  function handleChange(event: SelectChangeEvent) {
+    setToggleValue(event.target.value as string)
   }
 
   return (
@@ -121,7 +121,7 @@ function App() {
               pb: 16
             }} >
 
-            <Grid item>
+            <Grid item sx={{height: '15vh'}}>
 
               <Button onClick={handleConteudo}>
                 <Typography fontFamily='Outfit'>
@@ -131,22 +131,24 @@ function App() {
             </Grid>
 
             <Grid item>
-              <ToggleButtonGroup
-                value={toggleValue}
-                exclusive
-                size="small"
-                onChange={handleChange}
-              >
-                {
-                  filtros.map(filtro => (
-                    <ToggleButton value={filtro}>
-                      <Typography sx={{textTransform: 'lowercase'}}>{filtro}</Typography>
-                    </ToggleButton>
+              <FormControl sx={{width: 320, height: '15vh'}}>
+                <InputLabel id='select' sx={{top: -6}}>filtrar por tema</InputLabel>
+                <Select
+                  id='select'
+                  value={toggleValue}
+                  sx={{borderRadius: '1rem', height: 44}}
+                  onChange={handleChange}
+                >
+                  {
+                    filtros.map(filtro => (
+                      <MenuItem value={filtro}>
+                        <ListItemText sx={{ textTransform: 'lowercase' }}>{filtro}</ListItemText>
+                      </MenuItem>
 
-                  ))
-                }
-
-              </ToggleButtonGroup>
+                    ))
+                  }
+                </Select>
+              </FormControl>
             </Grid>
 
           </Grid>
