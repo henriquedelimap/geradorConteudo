@@ -169,6 +169,10 @@ function App() {
               pb: 16
             }} >
 
+            <Grid item sx={{ height: '15vh' }}>
+
+              <GenerateButton handleConteudo={handleConteudo} text={'gerar conteúdo'}/>
+            </Grid>
 
             <Grid item  sx={{ height: '15vh' }}>
               <Stack>
@@ -180,10 +184,6 @@ function App() {
               </Stack>
             </Grid>
             
-            <Grid item sx={{ height: '15vh' }}>
-
-              <GenerateButton handleConteudo={handleConteudo} text={'gerar conteúdo'}/>
-            </Grid>
 
           </Grid>
 
