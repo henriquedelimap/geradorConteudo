@@ -9,11 +9,36 @@ function App() {
   const [toggleValue, setToggleValue] = useState('')
   const [values, setValues] = useState<string[]>([''])
   const aleatorio = Math.floor(Math.random() * values.length)
+  const totalValues = [...ape, ...institucional, ...casa, ...lote]
 
-  const filtros = ['todos', 'financiamento', 'institucional', 'lote', 'casa', 'ape']
+  const filtros = [
+    {
+      label: 'todos',
+      length: totalValues.length
+    },
+    {
+      label: 'financiamento',
+      length: financiamento.length
+    },
+    {
+      label: 'institucional',
+      length: institucional.length
+    },
+    {
+      label: 'lote',
+      length: lote.length
+    },
+    {
+      label: 'casa',
+      length: casa.length
+    },
+    {
+      label: 'ape',
+      length: ape.length
+    }
+  ]
 
   useEffect(() => {
-    const totalValues = [...ape, ...institucional, ...casa, ...lote]
     switch (toggleValue) {
       case 'todos':
         setValues(totalValues)
@@ -121,7 +146,7 @@ function App() {
               pb: 16
             }} >
 
-            <Grid item sx={{height: '15vh'}}>
+            <Grid item sx={{ height: '15vh' }}>
 
               <Button onClick={handleConteudo}>
                 <Typography fontFamily='Outfit'>
@@ -131,18 +156,18 @@ function App() {
             </Grid>
 
             <Grid item>
-              <FormControl sx={{width: 320, height: '15vh'}}>
-                <InputLabel id='select' sx={{top: -6}}>filtrar por tema</InputLabel>
+              <FormControl sx={{ width: 320, height: '15vh' }}>
+                <InputLabel id='select' sx={{ top: -6 }}>filtrar por tema</InputLabel>
                 <Select
                   id='select'
                   value={toggleValue}
-                  sx={{borderRadius: '1rem', height: 44}}
+                  sx={{ borderRadius: '1rem', height: 44 }}
                   onChange={handleChange}
                 >
                   {
                     filtros.map(filtro => (
-                      <MenuItem value={filtro}>
-                        <ListItemText sx={{ textTransform: 'lowercase' }}>{filtro}</ListItemText>
+                      <MenuItem value={filtro.label}>
+                        <ListItemText sx={{ textTransform: 'lowercase' }}>{filtro.label} ({filtro.length})</ListItemText>
                       </MenuItem>
 
                     ))
