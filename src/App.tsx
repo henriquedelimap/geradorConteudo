@@ -34,12 +34,14 @@ function App() {
       label: 'automotiva',
     }
   ]
+
+  const totalImobiliaria = [...financiamento, ...institucional, ...lote, ...casa, ...ape]
   
   const filtros = {
     imobiliaria: [{
       label: 'todos',
-      length: 20,
-      quotes: ['']
+      length: totalImobiliaria.length,
+      quotes: totalImobiliaria.filter(i => i)
     },
     {
       label: 'financiamento',
@@ -142,27 +144,21 @@ function App() {
       
     }],
   }
-  let match = Object.keys(filtros).find(filtro => filtro === padronizaTexto(areaToggleValue))
-  const totalValues = [...filtros.imobiliaria?.map(item => item.quotes)]
-  // const nafa = [filtros.marketing?.quotes, filtros.arquitetura?.quotes, filtros.saude?.quotes, filtros.estetica?.quotes, filtros.automotiva?.quotes]
-  
-  
+  let match = Object?.keys(filtros)?.find(filtro => filtro === padronizaTexto(areaToggleValue))
+
   
   const matchFilter = () => {
-    let match = Object?.keys(filtros)?.find(filtro => filtro === padronizaTexto(areaToggleValue))
     return filtros[`${match}`]
   }
+
   let filtrosTemas = matchFilter()
-  let b = filtrosTemas?.find((item: any) => item.label === toggleValue)
-
-
-  console.log(values)
+  let tema = filtrosTemas?.find((item: any) => item.label === toggleValue)
+  let all = !!filtrosTemas ? filtrosTemas[0].quotes : ''
+  
 
   useEffect(() => {
-    toggleValue === b.label ? setValues(b.quotes) : ''
+    toggleValue === tema?.label ? setValues(tema.quotes) : setValues(['defina um tema e uma área'])
   }, [toggleValue])
-
-
 
   function handleConteudo() {
     setGerado(prev => prev === values[aleatorio] ? values[aleatorio + 1] : values[aleatorio])
