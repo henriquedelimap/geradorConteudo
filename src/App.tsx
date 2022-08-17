@@ -1,16 +1,52 @@
-import { Button, Grid, IconButton, OutlinedInput, Typography, Stack, Box, Paper } from '@mui/material'
+import { Button, Grid, IconButton, OutlinedInput, Typography, Stack, Box, Paper, Chip, ToggleButtonGroup, ToggleButton } from '@mui/material'
 import styled from "@emotion/styled";
-import { MdReplay } from 'react-icons/md'
+import { MdDone, MdReplay } from 'react-icons/md'
 import { useEffect, useState } from 'react'
 import { LapsooLogo, OOLogo } from './OOTECHNOLOGY'
-import { value } from './Data'
+import { ape, casa, financiamento, institucional, lote } from './Data'
 function App() {
   const [gerado, setGerado] = useState('inicial')
+  const [toggleValue, setToggleValue] = useState('')
+  const [values, setValues] = useState<string[]>([''])
+  const aleatorio = Math.floor(Math.random() * values.length)
 
-  const aleatorio = Math.floor(Math.random() * value.length)
+  const filtros = ['todos','financiamento', 'institucional', 'lote', 'casa', 'ape']
 
+  useEffect(() => {
+    const totalValues = [...ape, ...institucional, ...casa, ...lote]
+    switch (toggleValue) {
+      case 'todos':
+        setValues(totalValues)
+        break;
+      case 'financiamento':
+        setValues(financiamento)
+        break;
+
+      case 'institucional':
+        setValues(institucional)
+        break;
+
+      case 'ape':
+        setValues(ape)
+        break;
+
+      case 'casa':
+        setValues(casa)
+        break;
+
+      case 'lote':
+        setValues(lote)
+        break;
+      default:
+        setValues(totalValues)
+        break;
+    }
+  }, [toggleValue])
   function handleConteudo() {
-    setGerado(prev => prev === value[aleatorio] ? value[aleatorio + 1] : value[aleatorio])
+    setGerado(prev => prev === values[aleatorio] ? values[aleatorio + 1] : values[aleatorio])
+  }
+  function handleChange(event: React.MouseEvent<HTMLElement>, toggleValue: string) {
+    setToggleValue(toggleValue)
   }
 
   return (
@@ -76,17 +112,43 @@ function App() {
           <Grid
             item
             container
+            direction='column'
             xs={12}
             alignItems='center'
-            justifyContent='center'
+            justifyContent='space-evenly'
             sx={{
-              height: '50vh'
+              height: '50vh',
+              pb: 16
             }} >
-            <Button onClick={handleConteudo}>
-              <Typography fontFamily='Outfit'>
-                gerar conteúdo
-              </Typography>
-            </Button>
+
+            <Grid item>
+
+              <Button onClick={handleConteudo}>
+                <Typography fontFamily='Outfit'>
+                  gerar conteúdo
+                </Typography>
+              </Button>
+            </Grid>
+
+            <Grid item>
+              <ToggleButtonGroup
+                value={toggleValue}
+                exclusive
+                size="small"
+                onChange={handleChange}
+              >
+                {
+                  filtros.map(filtro => (
+                    <ToggleButton value={filtro}>
+                      <Typography sx={{textTransform: 'lowercase'}}>{filtro}</Typography>
+                    </ToggleButton>
+
+                  ))
+                }
+
+              </ToggleButtonGroup>
+            </Grid>
+
           </Grid>
 
         </Grid>
