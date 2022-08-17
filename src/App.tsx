@@ -157,7 +157,7 @@ function App() {
   
 
   useEffect(() => {
-    toggleValue === tema?.label ? setValues(tema.quotes) : setValues(['defina um tema e uma área'])
+    toggleValue === tema?.label ? setValues(tema.quotes) : setValues(['algumas funcionalidades estão em fase de desenvolvimento. Selecione uma área e um tema para dar início'])
   }, [toggleValue])
 
   function handleConteudo() {
