@@ -150,14 +150,14 @@ function App() {
     setAreaToggleValue(event.target.value as string)
   }
   console.log(filtros.map(item => item.imobiliaria)[0]);
-  
+
   return (
     <Box
       sx={{
         position: 'relative'
       }}>
       <Paper
-        elevation={12}
+        elevation={4}
         sx={{
           overflow: 'hidden',
           position: 'relative',
@@ -265,15 +265,34 @@ function App() {
       <Sticky
         bottom={0}
         index={-10}>
+        <Paper
+          elevation={8}
+        >
+
+          <Stack
+            justifyContent='center'
+            alignItems='center'
+            sx={{
+              height: '150vh',
+              width: '100%'
+
+            }}>
+            <OOLogo />
+          </Stack>
+        </Paper>
+      </Sticky>
+      <Sticky
+        bottom={0}
+        index={-15}>
         <Stack
           justifyContent='center'
           alignItems='center'
           sx={{
-            height: '50vh',
+            height: '35vh',
             width: '100%'
 
           }}>
-          <OOLogo />
+          <Typography fontFamily='Outfit'>ajude-nos a expadir o projeto</Typography>
         </Stack>
       </Sticky>
     </Box>
