@@ -20,7 +20,7 @@ export const SelectFilter = ({toggleValue, handleChange, filtros, selectLabel}: 
                   onChange={handleChange}
                 >
                   {
-                    filtros.map(filtro => (
+                    filtros?.map(filtro => (
                       <MenuItem value={filtro.label}>
                         <ListItemText sx={{ textTransform: 'lowercase' }}>{filtro.label}  {!!filtro.length ? (`(${filtro.length})`) : ''}</ListItemText>
                       </MenuItem>
