@@ -56,7 +56,17 @@ export const institucional = [
     'somos especialistas em concretizar sonhos',
     'concretize seus sonhos',
     'Nada melhor que mudar de vida. Então fale conosco',
-    'Sem organização tudo fica mais complicado.'
+    'Sem organização tudo fica mais complicado',
+    'você sabe o que é a Certidão Negativa de Débitos?',
+    'Aqui te oferecemos orientação de profissionais de ponta para encontrar as melhores alternativas imobiliárias para você',
+    'Construa hoje um amanhã mais seguro.',
+    'Além de oportunidades inéditas, aqui você conta com condições únicas de pagamento',
+    '🚀 Abrace o seu sonho e conte com a ajuda de profissionais experientes em encontrar as melhores oportunidades do mercado para você.',
+    '📢 Pensando em mudar de vida? Que tal algumas dicas para economizar mais? ',
+    'Você sonha, nós realizamos!',
+    'Você sonha, nós concretizamos!',
+
+
 
 
 ]

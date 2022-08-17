@@ -180,6 +180,7 @@ function App() {
               
             {/* <SelectFilter toggleValue={toggleValue} handleChange={handleChange} filtros={area} 
             selectLabel={'filtrar por área'} /> */}
+            
             <SelectFilter toggleValue={toggleValue} handleChange={handleChange} filtros={filtros} selectLabel={'filtrar por tema'} />
               </Stack>
             </Grid>

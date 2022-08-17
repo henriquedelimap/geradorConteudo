@@ -20,6 +20,11 @@ export const financiamento = [
     'Nosso crédito é seu melhor negócio ',
     'Mantenha sempre sua documentação organizada',
     'já ouviu falar em  análise de viabilidade da construção?',
+    'Saiba como usar o Fundo de Garantia do Tempo de Serviço (FGTS) para conquistar o seu financiamento',
+    'quando não é permitido usar o Fundo de Garantia do Tempo de Serviço (FGTS) para financiar',
+    ' 🔎 Você sabe o que é e como funciona a composição de renda para financiamento imobiliário?',
+    'Mas como a composição de renda pode te ajudar em um financiamento?'
+
 
 
 ]
