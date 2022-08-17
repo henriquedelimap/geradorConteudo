@@ -36,8 +36,8 @@ function App() {
   ]
 
   const totalImobiliaria = [...financiamento, ...institucional, ...lote, ...casa, ...ape]
-  
-  const filtros = {
+
+  const filtros: { [key: string]: any } = {
     imobiliaria: [{
       label: 'todos',
       length: totalImobiliaria.length,
