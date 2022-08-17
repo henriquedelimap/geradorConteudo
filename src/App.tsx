@@ -9,6 +9,7 @@ import { SelectFilter } from './components/Seletores';
 function App() {
   const [gerado, setGerado] = useState('inicial')
   const [toggleValue, setToggleValue] = useState('')
+  const [areaToggleValue, setAreaToggleValue] = useState('')
   const [values, setValues] = useState<string[]>([''])
   const aleatorio = Math.floor(Math.random() * values.length)
   const totalValues = [...ape, ...institucional, ...casa, ...lote]
@@ -36,28 +37,72 @@ function App() {
 
   const filtros = [
     {
-      label: 'todos',
-      length: totalValues.length
-    },
-    {
-      label: 'financiamento',
-      length: financiamento.length
-    },
-    {
-      label: 'institucional',
-      length: institucional.length
-    },
-    {
-      label: 'lote',
-      length: lote.length
-    },
-    {
-      label: 'casa',
-      length: casa.length
-    },
-    {
-      label: 'ape',
-      length: ape.length
+      imobiliaria: [{
+        label: 'todos',
+        length: totalValues.length
+      },
+      {
+        label: 'financiamento',
+        length: financiamento.length
+      },
+      {
+        label: 'institucional',
+        length: institucional.length
+      },
+      {
+        label: 'lote',
+        length: lote.length
+      },
+      {
+        label: 'casa',
+        length: casa.length
+      },
+      {
+        label: 'ape',
+        length: ape.length
+      }],
+      marketing: [{
+        label: 'todos',
+      },
+      {
+        label: 'marketing digital',
+      }],
+      arquitetura: [{
+        label: 'todos',
+      },
+      {
+        label: 'paisagismo',
+      },
+      {
+        label: 'interiores',
+      }],
+      saude: [{
+        label: 'todos',
+      },
+      {
+        label: 'odontologia',
+      },
+      {
+        label: 'psicologia',
+      }],
+      estetica: [{
+        label: 'todos',
+      },
+      {
+        label: 'limpeza de pele',
+      },
+      {
+        label: 'procedimentos',
+      }],
+      automotiva: [{
+        label: 'todos',
+      },
+      {
+        label: 'revisão',
+      },
+      {
+        label: 'dicas',
+      }],
     }
   ]
 
@@ -90,13 +135,22 @@ function App() {
         break;
     }
   }, [toggleValue])
+
+
+
+
+
   function handleConteudo() {
     setGerado(prev => prev === values[aleatorio] ? values[aleatorio + 1] : values[aleatorio])
   }
   function handleChange(event: SelectChangeEvent) {
     setToggleValue(event.target.value as string)
   }
-
+  function handleChangeArea(event: SelectChangeEvent) {
+    setAreaToggleValue(event.target.value as string)
+  }
+  console.log(filtros.map(item => item.imobiliaria)[0]);
+  
   return (
     <Box
       sx={{
@@ -171,20 +225,34 @@ function App() {
 
             <Grid item sx={{ height: '15vh' }}>
 
-              <GenerateButton handleConteudo={handleConteudo} text={'gerar conteúdo'}/>
+              <GenerateButton handleConteudo={handleConteudo} text={'gerar conteúdo'} />
             </Grid>
 
-            <Grid item  sx={{ height: '15vh' }}>
+            <Grid item sx={{ height: '15vh' }}>
               <Stack>
 
-              
-            {/* <SelectFilter toggleValue={toggleValue} handleChange={handleChange} filtros={area} 
-            selectLabel={'filtrar por área'} /> */}
-            
-            <SelectFilter toggleValue={toggleValue} handleChange={handleChange} filtros={filtros} selectLabel={'filtrar por tema'} />
+
+                <SelectFilter toggleValue={areaToggleValue} handleChange={handleChangeArea} filtros={area}
+                  selectLabel={'filtrar por área'} />
+                {areaToggleValue === 'imobiliária'
+                  ? <SelectFilter toggleValue={toggleValue} handleChange={handleChange} filtros={filtros.map(item => item.imobiliaria)[0]} selectLabel={'filtrar por tema'} />
+                  : areaToggleValue === 'marketing'
+                    ? <SelectFilter toggleValue={toggleValue} handleChange={handleChange} filtros={filtros.map(item => item.marketing)[0]} selectLabel={'filtrar por tema'} />
+                    : areaToggleValue === 'arquitetura'
+                      ? <SelectFilter toggleValue={toggleValue} handleChange={handleChange} filtros={filtros.map(item => item.arquitetura)[0]} selectLabel={'filtrar por tema'} />
+                      : areaToggleValue === 'saúde'
+                        ? <SelectFilter toggleValue={toggleValue} handleChange={handleChange} filtros={filtros.map(item => item.saude)[0]} selectLabel={'filtrar por tema'} />
+                        : areaToggleValue === 'estética'
+                          ? <SelectFilter toggleValue={toggleValue} handleChange={handleChange} filtros={filtros.map(item => item.estetica)[0]} selectLabel={'filtrar por tema'} />
+                          : areaToggleValue === 'automotiva'
+                            ? <SelectFilter toggleValue={toggleValue} handleChange={handleChange} filtros={filtros.map(item => item.automotiva)[0]} selectLabel={'filtrar por tema'} />
+                            : ''}
+
+
+
+
               </Stack>
             </Grid>
-            
 
           </Grid>
 
