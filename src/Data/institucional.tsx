@@ -11,9 +11,9 @@ export const institucional = [
     'somos especialistas em realizar planos',
     'somos especialistas em concretizar planos',
     'por que as pessoas estão nos escolhendo?',
-    'saiba mais sobre CET(custo efetivo total)', 
-    'saiba mais sobre taxa de corretagem', 
-    'saiba mais sobre escritura pública', 
+    'saiba mais sobre CET(custo efetivo total)',
+    'saiba mais sobre taxa de corretagem',
+    'saiba mais sobre escritura pública',
     'saiba mais sobre Registro de imóveis',
     'Você sabe o que é taxa de cessão de contrato?',
     'Já ouviu falar nas taxas cartoriais?',
@@ -55,6 +55,8 @@ export const institucional = [
     'somos especialistas em realizar sonhos',
     'somos especialistas em concretizar sonhos',
     'concretize seus sonhos',
-    
+    'Nada melhor que mudar de vida. Então fale conosco',
+    'Sem organização tudo fica mais complicado.'
+
 
 ]

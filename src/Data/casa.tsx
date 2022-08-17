@@ -16,6 +16,6 @@ export const casa = [
     'dicas para vender com segurança',
     'dicas para locar com segurança',
     '3 dicas para observar antes de comprar uma casa',
-    
+    'Pensando em concretizar o sonho da casa própria?'
     
 ]

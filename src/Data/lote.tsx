@@ -9,5 +9,13 @@ export const lote = [
     'as vantagens de comprar seu lote conosco',
     'Saiba como encontrar o lote perfeito para você',
     'Saiba como encontrar o terreno certo para você',
+    'como escolher o loteamento ideal? ',
+    'o que observar em um loteamento?',
+    'como analisar um loteamento?',
+    'escolha o loteamento ideal para você, confira as dicas',
+    'concretiza o sonho do lote próprio',
+    'Conquiste o sonho do lote próprio com condições de pagamento únicas.',
+    'o Loteamento projetado para sua família ter mais bem estar e qualidade de vida.',
+    'O loteamento ideal para investir com segurança em conforto e qualidade de vida',
 
 ]

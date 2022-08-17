@@ -14,5 +14,12 @@ export const financiamento = [
     'dúvidas sobre Composição de renda?',
     'aumente suas chances de ter um financiamento aprovado',
     'conquiste seu financiamento seguindo essas dicas',
+    '🔎  Procurando por um bom financiamento imobiliário? Aqui temos dicas para você economizar e realizar esse sonho. ',
+    '⏳ Você sabia que o financiamento imobiliário no Brasil possui uma idade limite?',
+    'Nosso crédito é seu melhor amigo',
+    'Nosso crédito é seu melhor negócio ',
+    'Mantenha sempre sua documentação organizada',
+    'já ouviu falar em  análise de viabilidade da construção?',
+
 
 ]
