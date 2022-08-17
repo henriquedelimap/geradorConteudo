@@ -4,12 +4,35 @@ import { MdDone, MdReplay } from 'react-icons/md'
 import { useEffect, useState } from 'react'
 import { LapsooLogo, OOLogo } from './OOTECHNOLOGY'
 import { ape, casa, financiamento, institucional, lote } from './Data'
+import { GenerateButton } from './components/Button';
+import { SelectFilter } from './components/Seletores';
 function App() {
   const [gerado, setGerado] = useState('inicial')
   const [toggleValue, setToggleValue] = useState('')
   const [values, setValues] = useState<string[]>([''])
   const aleatorio = Math.floor(Math.random() * values.length)
   const totalValues = [...ape, ...institucional, ...casa, ...lote]
+
+  const area = [
+    {
+      label: 'imobiliária',
+    },
+    {
+      label: 'marketing',
+    },
+    {
+      label: 'arquitetura',
+    },
+    {
+      label: 'saúde',
+    },
+    {
+      label: 'estética',
+    },
+    {
+      label: 'automotiva',
+    }
+  ]
 
   const filtros = [
     {
@@ -146,34 +169,20 @@ function App() {
               pb: 16
             }} >
 
+
+            <Grid item  sx={{ height: '15vh' }}>
+              <Stack>
+
+              
+            <SelectFilter toggleValue={toggleValue} handleChange={handleChange} filtros={area} 
+            selectLabel={'filtrar por área'} />
+            <SelectFilter toggleValue={toggleValue} handleChange={handleChange} filtros={filtros} selectLabel={'filtrar por tema'} />
+              </Stack>
+            </Grid>
+            
             <Grid item sx={{ height: '15vh' }}>
 
-              <Button onClick={handleConteudo}>
-                <Typography fontFamily='Outfit'>
-                  gerar conteúdo
-                </Typography>
-              </Button>
-            </Grid>
-
-            <Grid item>
-              <FormControl sx={{ width: 320, height: '15vh' }}>
-                <InputLabel id='select' sx={{ top: -6 }}>filtrar por tema</InputLabel>
-                <Select
-                  id='select'
-                  value={toggleValue}
-                  sx={{ borderRadius: '1rem', height: 44 }}
-                  onChange={handleChange}
-                >
-                  {
-                    filtros.map(filtro => (
-                      <MenuItem value={filtro.label}>
-                        <ListItemText sx={{ textTransform: 'lowercase' }}>{filtro.label} ({filtro.length})</ListItemText>
-                      </MenuItem>
-
-                    ))
-                  }
-                </Select>
-              </FormControl>
+              <GenerateButton handleConteudo={handleConteudo} text={'gerar conteúdo'}/>
             </Grid>
 
           </Grid>
