@@ -18,7 +18,7 @@ export const LapsooLogo = () => {
         <Typography fontFamily='Outfit' variant={'h4'} fontWeight={500}>
             <Stack sx={{ width: '100%' }} direction='row' justifyContent="center" alignItems='center'>
 
-                Laps<AzulLapsoo>oo</AzulLapsoo>
+                laps<AzulLapsoo>oo</AzulLapsoo>
             </Stack>
         </Typography>
     )
