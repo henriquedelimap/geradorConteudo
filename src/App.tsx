@@ -13,7 +13,7 @@ function App() {
   const [areaToggleValue, setAreaToggleValue] = useState('')
   const [values, setValues] = useState<string[]>([''])
   const aleatorio = Math.floor(Math.random() * values.length)
-
+  const link = `https://www.instagram.com/lapsootechnology/`
   const area = [
     {
       label: 'imobiliária',
@@ -35,7 +35,7 @@ function App() {
     }
   ]
 
-  
+
   let match = Object?.keys(filtros)?.find(filtro => filtro === padronizaTexto(areaToggleValue))
 
 
@@ -72,7 +72,7 @@ function App() {
         sx={{
           overflow: 'hidden',
           position: 'relative',
-          zIndex: '1',
+          zIndex: '100',
           borderRadius: '0'
         }}>
 
@@ -157,36 +157,40 @@ function App() {
 
       <Sticky
         bottom={0}
-        index={-10}>
+        index={1}>
         <Paper
           elevation={8}
         >
-
           <Stack
             justifyContent='center'
             alignItems='center'
             sx={{
-              height: '150vh',
+              height: '75vh',
               width: '100%'
 
             }}>
-            <OOLogo />
+            <Button  href={link}>
+              <Typography fontFamily='Outfit'>ajude-nos a expadir o projeto</Typography>
+            </Button>
           </Stack>
         </Paper>
       </Sticky>
       <Sticky
         bottom={0}
         index={-15}>
-        <Stack
-          justifyContent='center'
-          alignItems='center'
-          sx={{
-            height: '35vh',
-            width: '100%'
-
-          }}>
-          <Typography fontFamily='Outfit'>ajude-nos a expadir o projeto</Typography>
-        </Stack>
+        <Paper
+          elevation={8}
+        >
+          <Stack
+            justifyContent='center'
+            alignItems='center'
+            sx={{
+              height: '25vh',
+              width: '100%'
+            }}>
+            <OOLogo />
+          </Stack>
+        </Paper>
       </Sticky>
     </Box>
   )
