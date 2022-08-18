@@ -26,7 +26,7 @@ export const LapsooLogo = () => {
 
 const Azul = styled('p')(({ }) => ({
     color: '#0066cc',
-    letterSpacing: -3,
+    letterSpacing: -2.8,
     paddingRight: 2
 }))
 const Vermelho = styled('p')(({ }) => ({
