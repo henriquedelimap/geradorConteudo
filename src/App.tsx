@@ -1,4 +1,4 @@
-import { Button, Grid, IconButton, OutlinedInput, Typography, Stack, Box, Paper, Chip, ToggleButtonGroup, ToggleButton, Select, SelectChangeEvent, MenuItem, ListItemText, FormControl, InputLabel } from '@mui/material'
+import { Button, Grid, IconButton, OutlinedInput, Typography, Stack, Box, Paper, Chip, ToggleButtonGroup, ToggleButton, Select, SelectChangeEvent, MenuItem, ListItemText, FormControl, InputLabel, Collapse, Fade, Slide } from '@mui/material'
 import styled from "@emotion/styled";
 import { MdDone, MdReplay } from 'react-icons/md'
 import { useEffect, useState } from 'react'
@@ -12,6 +12,7 @@ function App() {
   const [toggleValue, setToggleValue] = useState('')
   const [areaToggleValue, setAreaToggleValue] = useState('')
   const [values, setValues] = useState<string[]>([''])
+  const [openLogin, setOpenLogin] = useState(false)
   const aleatorio = Math.floor(Math.random() * values.length)
   const link = `https://www.instagram.com/lapsootechnology/`
   const area = [
@@ -153,7 +154,7 @@ function App() {
         </Grid>
       </Paper>
 
-      {/* LOGO OOTECHNOLOGY */}
+      {/* FOOTER */}
 
       <Sticky
         bottom={0}
@@ -161,38 +162,72 @@ function App() {
         <Paper
           elevation={8}
         >
-          <Stack
-            justifyContent='center'
+          <Grid container
             alignItems='center'
             sx={{
-              height: '75vh',
-              width: '100%'
+              minHeight: '28vh',
+              width: '100%',
+              p: 2
 
             }}>
-            <Button  href={link}>
-              <Typography fontFamily='Outfit'>ajude-nos a expadir o projeto</Typography>
-            </Button>
-          </Stack>
+
+            {/* LOGIN */}
+
+            <Grid item container justifyContent='center' xs={6}>
+              <Button onClick={() => setOpenLogin(!openLogin)} >
+                <Typography sx={{ textTransform: 'lowercase' }} fontFamily='Outfit'>login</Typography>
+              </Button>
+            </Grid>
+
+            {/* CONTRIBUIR */}
+
+            <Grid item container justifyContent='center' xs={6}>
+              <Button href={link}>
+                <Typography sx={{ textTransform: 'lowercase' }} noWrap align='right' fontFamily='Outfit'>contribuir</Typography>
+              </Button>
+            </Grid>
+            <Grid sx={{ overflow: 'hidden', height: '5vh'}} item container justifyContent='center' xs={12}>
+
+
+              <Collapse in={openLogin}>
+              <Slide in={openLogin} direction='right'>
+               
+
+                  <Paper
+                    elevation={0}
+                    sx={{zIndex: 100,}}
+                  >
+                    <Grid container
+                      alignItems='center'
+                      columnSpacing={2}
+                      sx={{
+                        height: '5vh',
+
+                      }}>
+                        <Grid item>
+
+                        <OutlinedInput size='small'></OutlinedInput>
+                        </Grid>
+                        <Grid item>
+
+                        <OutlinedInput size='small'></OutlinedInput>
+                        </Grid>
+                      </Grid>
+                  </Paper>
+              </Slide>
+              </Collapse>
+            </Grid>
+            <Grid item container justifyContent='center' xs={12}>
+              <OOLogo />
+            </Grid>
+          </Grid>
         </Paper>
       </Sticky>
-      <Sticky
-        bottom={0}
-        index={-15}>
-        <Paper
-          elevation={8}
-        >
-          <Stack
-            justifyContent='center'
-            alignItems='center'
-            sx={{
-              height: '25vh',
-              width: '100%'
-            }}>
-            <OOLogo />
-          </Stack>
-        </Paper>
-      </Sticky>
-    </Box>
+
+
+
+
+    </Box >
   )
 }
 
