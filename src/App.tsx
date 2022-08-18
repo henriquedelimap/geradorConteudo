@@ -186,7 +186,7 @@ function App() {
                 <Typography sx={{ textTransform: 'lowercase' }} noWrap align='right' fontFamily='Outfit'>contribuir</Typography>
               </Button>
             </Grid>
-            <Grid sx={{ overflow: 'hidden', height: '5vh'}} item container justifyContent='center' xs={12}>
+            <Grid sx={{ overflow: 'hidden', height: '5.5vh'}} item container justifyContent='center' xs={12}>
 
 
               <Collapse in={openLogin}>
