@@ -190,7 +190,7 @@ function App() {
 
 
               <Collapse in={openLogin}>
-              <Slide in={openLogin} direction='right'>
+              <Slide in={openLogin} direction='down'>
                
 
                   <Paper
