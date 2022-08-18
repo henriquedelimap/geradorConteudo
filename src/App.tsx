@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { MdDone, MdReplay } from 'react-icons/md'
 import { useEffect, useState } from 'react'
 import { LapsooLogo, OOLogo } from './OOTECHNOLOGY'
-import { ape, casa, financiamento, institucional, lote } from './Data'
+import { filtros } from './Data'
 import { GenerateButton } from './components/Button';
 import { SelectFilter } from './components/Seletores';
 import { padronizaTexto } from './Utils'
@@ -13,7 +13,7 @@ function App() {
   const [areaToggleValue, setAreaToggleValue] = useState('')
   const [values, setValues] = useState<string[]>([''])
   const aleatorio = Math.floor(Math.random() * values.length)
-  
+
   const area = [
     {
       label: 'imobiliária',
@@ -35,118 +35,10 @@ function App() {
     }
   ]
 
-  const totalImobiliaria = [...financiamento, ...institucional, ...lote, ...casa, ...ape]
-
-  const filtros: { [key: string]: any } = {
-    imobiliaria: [{
-      label: 'todos',
-      length: totalImobiliaria.length,
-      quotes: totalImobiliaria.filter(i => i)
-    },
-    {
-      label: 'financiamento',
-      length: financiamento.length,
-      quotes: financiamento
-    },
-    {
-      label: 'institucional',
-      length: institucional.length,
-      quotes: institucional
-      
-    },
-    {
-      label: 'lote',
-      length: lote.length,
-      quotes: lote
-    },
-    {
-      label: 'casa',
-      length: casa.length,
-      quotes: casa
-    },
-    {
-      label: 'ape',
-      length: ape.length,
-      quotes: ape
-    }],
-    
-    marketing: [{
-      label: 'todos',
-      quotes: ['']
-    },
-    {
-      label: 'marketing digital',
-      quotes: ['']
-      
-    }],
-    
-    arquitetura: [{
-      label: 'todos',
-      quotes: ['']
-      
-    },
-    {
-      label: 'paisagismo',
-      quotes: ['']
-      
-    },
-    {
-      label: 'interiores',
-      quotes: ['']
-      
-    }],
-    
-    saude: [{
-      label: 'todos',
-      quotes: ['']
-      
-    },
-    {
-      label: 'odontologia',
-      quotes: ['']
-      
-    },
-    {
-      label: 'psicologia',
-      quotes: ['']
-      
-    }],
-    
-    estetica: [{
-      label: 'todos',
-      quotes: ['']
-      
-    },
-    {
-      label: 'limpeza de pele',
-      quotes: ['']
-      
-    },
-    {
-      label: 'procedimentos',
-      quotes: ['']
-      
-    }],
-    
-    automotiva: [{
-      label: 'todos',
-      quotes: ['']
-      
-    },
-    {
-      label: 'revisão',
-      quotes: ['']
-      
-    },
-    {
-      label: 'dicas',
-      quotes: ['']
-      
-    }],
-  }
+  
   let match = Object?.keys(filtros)?.find(filtro => filtro === padronizaTexto(areaToggleValue))
 
-  
+
   const matchFilter = () => {
     return filtros[`${match}`]
   }
@@ -154,7 +46,7 @@ function App() {
   let filtrosTemas = matchFilter()
   let tema = filtrosTemas?.find((item: any) => item.label === toggleValue)
   let all = !!filtrosTemas ? filtrosTemas[0].quotes : ''
-  
+
 
   useEffect(() => {
     toggleValue === tema?.label ? setValues(tema.quotes) : setValues(['algumas funcionalidades estão em fase de desenvolvimento. Selecione uma área e um tema para dar início'])
@@ -252,7 +144,7 @@ function App() {
               <Stack>
                 <SelectFilter toggleValue={areaToggleValue} handleChange={handleChangeArea} filtros={area}
                   selectLabel={'filtrar por área'} />
-                  {!!filtrosTemas ? <SelectFilter toggleValue={toggleValue} handleChange={handleChange} filtros={filtrosTemas}
+                {!!filtrosTemas ? <SelectFilter toggleValue={toggleValue} handleChange={handleChange} filtros={filtrosTemas}
                   selectLabel={'filtrar por tema'} /> : ''}
               </Stack>
             </Grid>
