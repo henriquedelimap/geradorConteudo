@@ -126,21 +126,20 @@ function App() {
           <Grid
             item
             container
-            direction='column'
+            direction='row'
+            alignItems='start'
+            justifyContent='center'
             xs={12}
-            alignItems='center'
-            justifyContent='space-evenly'
             sx={{
               height: '50vh',
-              pb: 16
+              pb: 12
             }} >
 
-            <Grid item sx={{ height: '15vh' }}>
-
+            <Grid item container alignItems='center' justifyContent='center' xs={12} sx={{ height: '8vh' }}>
               <GenerateButton handleConteudo={handleConteudo} text={'gerar conteúdo'} />
             </Grid>
 
-            <Grid item sx={{ height: '15vh' }}>
+            <Grid container justifyContent='center' item xs={12} sx={{ height: '15vh', width: '100vw' }}>
               <Stack>
                 <SelectFilter toggleValue={areaToggleValue} handleChange={handleChangeArea} filtros={area}
                   selectLabel={'filtrar por área'} />
