@@ -67,7 +67,7 @@ export const marketingDigital = [
 'Como viralizar no whatsapp?',
 'Como viralizar no tiktok?',
 'Como viralizar no facebook?',
-'como criar conteúdos capazex de chamar a atenção?',
+'como criar conteúdos capazes de chamar a atenção?',
 'o que são gatilhos mentais?',
 'como usar a seu favor gatilhos mentais?',
 'dicas para criar uma mensagem clara e atraente',
