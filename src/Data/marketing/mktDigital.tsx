@@ -31,7 +31,7 @@ export const marketingDigital = [
 'já ouviu falar em Links patrocinados, landing pages, Google Ads e anúncios?',
 'Quem não é visto não é lembrado.',
 'entenda mais sobre modelos de negócio',
-'conheça mais sobre modelos de negócio e como fazer o branding da sua marca?',
+'conheça mais sobre modelos de negócio e como fazer o branding da sua marca',
 'Entenda a diferença entre tráfego pago e tráfego orgânico',
 'diferença entre tráfego pago e tráfego orgânico',
 'O que é marketing e marketing digital?',
