@@ -22,18 +22,18 @@ function App() {
     {
       label: 'marketing',
     },
-    {
-      label: 'arquitetura',
-    },
-    {
-      label: 'saúde',
-    },
-    {
-      label: 'estética',
-    },
-    {
-      label: 'automotiva',
-    }
+    // {
+    //   label: 'arquitetura',
+    // },
+    // {
+    //   label: 'saúde',
+    // },
+    // {
+    //   label: 'estética',
+    // },
+    // {
+    //   label: 'automotiva',
+    // }
   ]
 
 

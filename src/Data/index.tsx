@@ -35,44 +35,44 @@ import {
 
 const filtros: { [key: string]: any } = {
   imobiliaria: [{
-    label: 'todos',
+    label: 'total imobiliária',
     length: totalImobiliaria.length,
     quotes: totalImobiliaria.filter(i => i)
   },
   {
     label: 'financiamento',
-    length: financiamento.length,
+    // length: financiamento.length,
     quotes: financiamento
   },
   {
     label: 'institucional',
-    length: institucional.length,
+    // // length: institucional.length,
     quotes: institucional
   },
   {
     label: 'lote',
-    length: lote.length,
+    // // length: lote.length,
     quotes: lote
   },
   {
     label: 'casa',
-    length: casa.length,
+    // // length: casa.length,
     quotes: casa
   },
   {
     label: 'ape',
-    length: ape.length,
+    // // length: ape.length,
     quotes: ape
   }],
 
   marketing: [{
-    label: 'todos',
+    label: 'total marketing',
     length: totalMarketing.length,
     quotes: totalMarketing
   },
   {
     label: 'marketing digital',
-    length: marketingDigital.length,
+    // length: marketingDigital.length,
     quotes: marketingDigital
   }],
   arquitetura: [{
