@@ -1,9 +1,15 @@
 import { Grid, Stack } from "@mui/material"
+import { useState } from "react"
 import { BtnAdd } from "./buttom"
 import { InAdd } from "./input"
 import { SelectAdd } from "./select"
 
 export const AddForm = () => {
+    const [inputValue, setInputValue] = useState('')
+    const [toggleValue, setToggleValue] = useState('')
+    const [areaToggleValue, setAreaToggleValue] = useState('')
+
+
     return (
 
         <Stack
@@ -24,11 +30,12 @@ export const AddForm = () => {
         >
 
 
-            <SelectAdd />
+            <SelectAdd toggleValue={toggleValue} setToggleValue={setToggleValue} areaToggleValue={areaToggleValue} setAreaToggleValue={setAreaToggleValue} />
 
-            <InAdd />
+            <InAdd inputValue={inputValue} setInputValue={setInputValue} />
 
-            <BtnAdd />
+
+            <BtnAdd inputValue={inputValue} toggleValue={toggleValue} areaToggleValue={areaToggleValue} />
         </Stack>
     )
 }

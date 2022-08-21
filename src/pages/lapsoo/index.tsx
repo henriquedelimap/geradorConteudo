@@ -13,6 +13,7 @@ import { padronizaTexto } from '../../Utils'
 
 
 export interface IFrase {
+    tema: string;
     id: number | string | null
     area: string
     quote: string

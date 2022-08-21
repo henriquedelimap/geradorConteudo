@@ -5,6 +5,8 @@ export const GET_FRASES = gql`
    query Frases {
     frases {
         quote
+        area
+        tema
     }
 }
 `

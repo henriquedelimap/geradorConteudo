@@ -1,11 +1,17 @@
 import { SelectChangeEvent, Stack } from "@mui/material"
-import { useState } from "react"
+import { useState, Dispatch, SetStateAction } from "react"
 import { SelectFilter } from "../../../components/Seletores"
 import { area } from "../../lapsoo"
 
-export const SelectAdd = () => {
-    const [toggleValue, setToggleValue] = useState('')
-    const [areaToggleValue, setAreaToggleValue] = useState('')
+interface Props {
+    toggleValue: string
+    setToggleValue: Dispatch<SetStateAction<string>>
+    areaToggleValue: string
+    setAreaToggleValue: Dispatch<SetStateAction<string>>
+}
+export const SelectAdd = (props: Props) => {
+    const { toggleValue, setToggleValue, areaToggleValue, setAreaToggleValue } = props
+
 
     function handleChange(event: SelectChangeEvent) {
         setToggleValue(event.target.value as string)

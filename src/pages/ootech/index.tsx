@@ -58,10 +58,11 @@ export const OOTechPage = () => {
                     inputProps={{ 'aria-labelledby': item.quote }}
                   />} >
                 <ListItemButton>
+                  <ListItemText>{item.area}</ListItemText>
+                  <ListItemText>{item?.tema}</ListItemText>
                   <ListItemText>{item.quote}</ListItemText>
                 </ListItemButton>
               </ListItem>
-
             ))
           }
         </List>
