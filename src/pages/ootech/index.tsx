@@ -78,7 +78,7 @@ export const OOTechPage = () => {
 
               <ListItem secondaryAction={
                 <Checkbox
-                  edge="end"
+                  edge="start"
                   onChange={handleToggle(Number(item.id))}
                   checked={checked.indexOf(Number(item.id)) !== -1}
                   inputProps={{ 'aria-labelledby': item.quote }}
