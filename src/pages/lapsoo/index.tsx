@@ -42,6 +42,7 @@ export const area = [
 export const LapsooPage = () => {
     const frasesDB = Query(GET_FRASES)
 
+    // console.log(frasesDB.frases?.map((item: IFrase) => item.quote));
 
     const [gerado, setGerado] = useState('inicial')
     const [toggleValue, setToggleValue] = useState('')
@@ -232,6 +233,8 @@ export const LapsooPage = () => {
                                     </Paper>
                                 </Slide>
                             </Collapse>
+
+
                         </Grid>
                         <Grid item container justifyContent='center' xs={12}>
                             <OOLogo />
@@ -240,8 +243,6 @@ export const LapsooPage = () => {
                     </Grid>
                 </Paper>
             </Sticky>
-
-
 
 
         </Box >

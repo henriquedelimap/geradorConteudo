@@ -91,9 +91,7 @@ export const OOTechPage = () => {
             ))
           }
 
-          {
-            frasesDB.frases?.map((item: IFrase) => item.quote)
-          }
+
         </List>
       </Grid>
     </Grid >
