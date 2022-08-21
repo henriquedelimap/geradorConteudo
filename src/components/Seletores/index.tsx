@@ -12,7 +12,7 @@ interface Props {
 }
 export const SelectFilter = ({ toggleValue, handleChange, filtros, selectLabel, height }: Props) => {
   return (
-    <FormControl sx={{ width: 320, }}>
+    <FormControl sx={{ width: { xs: '100%', md: '100%', lg: 320 } }}>
       <InputLabel size='small' id='select' >{selectLabel}</InputLabel>
       <Select
         id='select'

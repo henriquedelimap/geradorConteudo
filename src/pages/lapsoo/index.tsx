@@ -7,7 +7,7 @@ import { Sticky } from '../../Style/index.js';
 import { GET_FRASES, Query } from '../../API/GET/get.js'
 import { LapsooLogo, OOLogo } from '../../OOTECHNOLOGY'
 import { filtros } from '../../Data'
-import { GenerateButton } from '../../components/Button';
+import { GenerateButton } from './Button';
 import { SelectFilter } from '../../components/Seletores';
 import { padronizaTexto } from '../../Utils'
 

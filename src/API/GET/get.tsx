@@ -2,17 +2,14 @@ import { DocumentNode, gql, OperationVariables, TypedDocumentNode, useQuery } fr
 
 
 export const GET_FRASES = gql`
-   query {
+   query Frases {
     frases {
-        id
-        area
         quote
-
     }
 }
 `
 
-export function Query(getFrases: any) {
+export function Query(getFrases: DocumentNode) {
     const { loading, error, data } = useQuery(getFrases)
     if (loading) {
         return <p>Loading...</p>
@@ -20,6 +17,7 @@ export function Query(getFrases: any) {
     if (error) {
         return <p>erro :/</p>
     }
+    console.log(data, "visitando aqui o dado");
 
     return data
 }
