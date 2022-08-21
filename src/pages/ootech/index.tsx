@@ -73,7 +73,7 @@ export const OOTechPage = () => {
       </Grid>
       <Grid item xs={12} sx={{ minHeight: '150vh', overflow: 'hidden' }}>
         <List>
-          {/* {
+          {
             frasesDB.frases?.map((item: IFrase) => (
 
               <ListItem secondaryAction={
@@ -89,7 +89,7 @@ export const OOTechPage = () => {
               </ListItem>
 
             ))
-          } */}
+          }
 
           {
             frasesDB.frases?.map((item: IFrase) => item.quote)
