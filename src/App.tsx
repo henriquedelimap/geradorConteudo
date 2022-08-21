@@ -7,7 +7,20 @@ import { filtros } from './Data'
 import { GenerateButton } from './components/Button';
 import { SelectFilter } from './components/Seletores';
 import { padronizaTexto } from './Utils'
+import { GET_FRASES, Query } from './API/GET/get.js'
+import { useQuery } from '@apollo/client';
+interface IFrase {
+  id: number | string | null
+  area: string
+  quote: string
+}
 function App() {
+
+
+  const frasesDB = Query(GET_FRASES)
+  console.log();
+
+
   const [gerado, setGerado] = useState('inicial')
   const [toggleValue, setToggleValue] = useState('')
   const [areaToggleValue, setAreaToggleValue] = useState('')
@@ -76,7 +89,6 @@ function App() {
           zIndex: '100',
           borderRadius: '0'
         }}>
-
         <Grid
           container
           alignItems='center'
@@ -113,6 +125,8 @@ function App() {
               fontWeight={300}
               fontFamily='Outfit'
             >
+
+
               {
                 gerado === 'inicial'
                   ? <LapsooLogo />
@@ -186,16 +200,16 @@ function App() {
                 <Typography sx={{ textTransform: 'lowercase' }} noWrap align='right' fontFamily='Outfit'>contribuir</Typography>
               </Button>
             </Grid>
-            <Grid sx={{ overflow: 'hidden', height: '6vh'}} item container justifyContent='center' xs={12}>
+            <Grid sx={{ overflow: 'hidden', height: '6vh' }} item container justifyContent='center' xs={12}>
 
 
               <Collapse in={openLogin}>
-              <Slide in={openLogin} direction='down'>
-               
+                <Slide in={openLogin} direction='down'>
+
 
                   <Paper
                     elevation={0}
-                    sx={{zIndex: 100,}}
+                    sx={{ zIndex: 100, }}
                   >
                     <Grid container
                       alignItems='center'
@@ -204,22 +218,25 @@ function App() {
                         height: '6vh',
                         p: 0
                       }}>
-                        <Grid item>
+                      <Grid item>
 
                         <OutlinedInput size='small'></OutlinedInput>
-                        </Grid>
-                        <Grid item>
-
-                        <OutlinedInput size='small'></OutlinedInput>
-                        </Grid>
                       </Grid>
+                      <Grid item>
+
+                        <OutlinedInput size='small'></OutlinedInput>
+                      </Grid>
+                    </Grid>
                   </Paper>
-              </Slide>
+                </Slide>
               </Collapse>
             </Grid>
             <Grid item container justifyContent='center' xs={12}>
               <OOLogo />
             </Grid>
+            {
+              frasesDB.frases?.map((item: IFrase) => item.quote)
+            }
           </Grid>
         </Paper>
       </Sticky>
