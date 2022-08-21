@@ -51,8 +51,8 @@ export const OOTechPage = () => {
           boxShadow: '0px 12px 8px -20px #111111'
         }} xs={12}>
 
-        <Grid container item xs={5.5} alignItems='center' sx={{ p: .8 }} justifyContent='end' direction='row'>
-          <Stack sx={{ width: '24vw' }} direction='row' spacing={.8}>
+        <Grid container item xs={5.5} alignItems='center' sx={{ p: .8, }} justifyContent='end' direction='row'>
+          <Stack sx={{ width: { xs: '43vw', md: '24vw', lg: '24vw' } }} direction='row' spacing={.8}>
 
             <SelectFilter toggleValue={areaToggleValue} handleChange={handleChangeArea} filtros={area}
               selectLabel={'filtrar por área'} />
@@ -62,7 +62,7 @@ export const OOTechPage = () => {
         </Grid>
         <Grid container justifyContent='start' rowSpacing={2.4} sx={{ p: .8 }} item xs={6.5}>
 
-          <FormControl sx={{ width: '32vw', height: 44 }}>
+          <FormControl sx={{ width: { xs: '50vw', md: '32vw', lg: '32vw' }, height: 44 }}>
             <InputLabel size='small' >insira uma nova frase</InputLabel>
             <OutlinedInput label="insira uma nova frase" size='small' sx={{ borderRadius: '1rem', height: 44 }} endAdornment={<Button>
               <MdCreate />
