@@ -7,6 +7,7 @@ export const GET_FRASES = gql`
         id
         area
         quote
+        tema
     }
 }
 `
@@ -19,5 +20,6 @@ export function Query(getFrases: any) {
     if (error) {
         return <p>erro :/</p>
     }
+
     return data
 }

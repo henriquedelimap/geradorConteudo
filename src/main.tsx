@@ -3,9 +3,8 @@ import * as Realm from "realm-web";
 import { createTheme, CssBaseline, responsiveFontSizes, ThemeProvider } from '@mui/material'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
+import { Rotas } from './Rotas'
 
-const graphqlUri = 'mongodb+srv://ootechnology:henrylima123@cluster0.ejf86i9.mongodb.net'
 
 let theme = createTheme()
 
@@ -22,7 +21,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <App />
+        <Rotas />
       </ThemeProvider>
     </ApolloProvider>
   </React.StrictMode>
