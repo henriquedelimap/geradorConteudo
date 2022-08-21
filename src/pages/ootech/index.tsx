@@ -45,7 +45,7 @@ export const OOTechPage = () => {
           width: '98vw',
           zIndex: 1000,
           position: 'sticky',
-          top: '-43%',
+          top: '-41%',
           background: 'rgba(232, 245, 255, 0.07)',
           backdropFilter: 'blur(32px)',
           boxShadow: '0px 12px 8px -20px #111111'
