@@ -79,11 +79,11 @@ export const OOTechPage = () => {
                   </Paper>
                 } >
 
-                <Grid container justifyContent='start' gap={{ xs: 1, md: 2, lg: 2 }}>
-                  <Grid xs={4} item container  >
+                <Grid container justifyContent='start' gap={{ xs: 0, md: 2, lg: 2 }}>
+                  <Grid xs={3} item container  >
                     <Grid item xs={12} md={6} container alignItems='center' justifyContent={{ xs: 'start', md: 'center', lg: 'center' }}>
 
-                      <Typography noWrap>
+                      <Typography variant={'body2'} noWrap>
 
                         {item.area}
                       </Typography>
@@ -91,17 +91,16 @@ export const OOTechPage = () => {
                     </Grid>
                     <Grid item xs={12} md={6} container alignItems='center' justifyContent={{ xs: 'start', md: 'center', lg: 'center' }}>
 
-                      <Typography noWrap>
+                      <Typography variant={'body2'} noWrap>
                         {item?.tema}
                       </Typography>
 
                     </Grid>
                   </Grid>
 
-                  <Grid xs={6} md={7} item >
-                    <Typography >
-
-                      <ListItemText>{item.quote}</ListItemText>
+                  <Grid xs={9} md={7} item sx={{ p: 1 }} >
+                    <Typography variant={'body2'} >
+                      {item.quote}
                     </Typography>
                   </Grid>
 
