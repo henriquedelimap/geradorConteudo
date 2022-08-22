@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, Collapse, FormControl, Grid, IconButton, InputLabel, List, ListItem, ListItemButton, ListItemText, OutlinedInput, SelectChangeEvent, Stack } from "@mui/material"
+import { Box, Button, Checkbox, Collapse, FormControl, Grid, IconButton, InputLabel, List, ListItem, ListItemButton, ListItemText, OutlinedInput, Paper, SelectChangeEvent, Stack } from "@mui/material"
 import { useState } from "react";
 import { MdAdd, MdCreate, MdDelete, MdEdit, MdRemove } from "react-icons/md"
 import { GET_FRASES, Query } from "../../API/GET/get.js";
@@ -45,37 +45,50 @@ export const OOTechPage = () => {
         }}>
         <List>
           {
-            frasesDB.frases?.map((item: IFrase, index: number) => (
+            frasesDB.frases?.slice(1, 40).map((item: IFrase, index: number) => (
 
               <ListItem
                 key={index}
                 onClick={handleToggle(index)}
                 secondaryAction={
-                  <Stack direction='row' alignItems='center'>
+                  <Paper elevation={0} sx={{ display: 'flex', flexDirection: checked.indexOf(index) ? 'row-reverse' : 'row', alignItems: 'center', flexWrap: 'nowrap', height: 44, p: { xs: 1, md: 2, lg: 2 } }}>
                     <Checkbox
                       edge="start"
                       onChange={handleToggle(index)}
                       checked={checked.indexOf(index) !== -1}
                       inputProps={{ 'aria-labelledby': item.quote }}
                     />
-                    <Collapse orientation='horizontal' in={checked.indexOf(index) !== -1}>
-                      <IconButton>
+                    <Collapse orientation="horizontal" in={checked.indexOf(index) !== -1}>
+                      <Paper elevation={checked.indexOf(index) !== -1 ? 1 : 0} sx={{ display: 'flex', flexWrap: 'noWrap' }}>
 
-                        <MdRemove />
-                      </IconButton>
-                      <IconButton>
+                        <ListItemButton>
 
-                        <MdEdit />
-                      </IconButton>
+                          <MdRemove />
+                        </ListItemButton>
+                        <ListItemButton>
+
+                          <MdEdit />
+                        </ListItemButton>
+                      </Paper>
                     </Collapse>
-                  </Stack>
+                  </Paper>
                 } >
-                { }
-                <ListItemButton>
-                  <ListItemText>{item.area}</ListItemText>
-                  <ListItemText>{item?.tema}</ListItemText>
-                  <ListItemText>{item.quote}</ListItemText>
-                </ListItemButton>
+
+                <Grid container rowSpacing={2} columnSpacing={4}>
+                  <Grid item sx={{ border: '1px solid black' }} >
+
+                    <ListItemText>{item.area}</ListItemText>
+                  </Grid>
+                  <Grid item sx={{ border: '1px solid black' }} >
+
+                    <ListItemText>{item?.tema}</ListItemText>
+                  </Grid>
+                  <Grid item sx={{ border: '1px solid black' }} >
+
+                    <ListItemText>{item.quote}</ListItemText>
+                  </Grid>
+
+                </Grid>
               </ListItem>
             ))
           }

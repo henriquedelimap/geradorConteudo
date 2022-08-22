@@ -9,9 +9,9 @@ export const InAdd = (props: Props) => {
     const { inputValue, setInputValue } = props
     return (
         <FormControl sx={{ height: 44, width: '100%' }}>
-            <InputLabel size='small' >sugestão</InputLabel>
+            <InputLabel size='small' >frase</InputLabel>
             <OutlinedInput
-                label="sugestão"
+                label="frase"
                 size='small'
                 onChange={(e) => setInputValue(e.target.value)}
                 sx={{
