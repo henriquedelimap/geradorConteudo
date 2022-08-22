@@ -8,7 +8,7 @@ export const AddForm = () => {
     const [inputValue, setInputValue] = useState('')
     const [toggleValue, setToggleValue] = useState('')
     const [areaToggleValue, setAreaToggleValue] = useState('')
-
+    const [envio, setEnvio] = useState(false)
 
     return (
 
@@ -28,14 +28,9 @@ export const AddForm = () => {
             }}
             spacing={2}
         >
-
-
             <SelectAdd toggleValue={toggleValue} setToggleValue={setToggleValue} areaToggleValue={areaToggleValue} setAreaToggleValue={setAreaToggleValue} />
-
             <InAdd inputValue={inputValue} setInputValue={setInputValue} />
-
-
-            <BtnAdd inputValue={inputValue} toggleValue={toggleValue} areaToggleValue={areaToggleValue} />
+            <BtnAdd setEnvio={setEnvio} inputValue={inputValue} toggleValue={toggleValue} areaToggleValue={areaToggleValue} />
         </Stack>
     )
 }

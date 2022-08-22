@@ -1,6 +1,6 @@
-import { Box, Button, Checkbox, FormControl, Grid, IconButton, InputLabel, List, ListItem, ListItemButton, ListItemText, OutlinedInput, SelectChangeEvent, Stack } from "@mui/material"
+import { Box, Button, Checkbox, Collapse, FormControl, Grid, IconButton, InputLabel, List, ListItem, ListItemButton, ListItemText, OutlinedInput, SelectChangeEvent, Stack } from "@mui/material"
 import { useState } from "react";
-import { MdAdd, MdCreate } from "react-icons/md"
+import { MdAdd, MdCreate, MdDelete, MdEdit, MdRemove } from "react-icons/md"
 import { GET_FRASES, Query } from "../../API/GET/get.js";
 import { SelectFilter } from "../../components/Seletores/index.js";
 import { Sticky } from '../../Style/index.js';
@@ -51,12 +51,26 @@ export const OOTechPage = () => {
                 key={index}
                 onClick={handleToggle(index)}
                 secondaryAction={
-                  <Checkbox
-                    edge="start"
-                    onChange={handleToggle(index)}
-                    checked={checked.indexOf(index) !== -1}
-                    inputProps={{ 'aria-labelledby': item.quote }}
-                  />} >
+                  <Stack direction='row' alignItems='center'>
+                    <Checkbox
+                      edge="start"
+                      onChange={handleToggle(index)}
+                      checked={checked.indexOf(index) !== -1}
+                      inputProps={{ 'aria-labelledby': item.quote }}
+                    />
+                    <Collapse orientation='horizontal' in={checked.indexOf(index) !== -1}>
+                      <IconButton>
+
+                        <MdRemove />
+                      </IconButton>
+                      <IconButton>
+
+                        <MdEdit />
+                      </IconButton>
+                    </Collapse>
+                  </Stack>
+                } >
+                { }
                 <ListItemButton>
                   <ListItemText>{item.area}</ListItemText>
                   <ListItemText>{item?.tema}</ListItemText>
@@ -66,7 +80,7 @@ export const OOTechPage = () => {
             ))
           }
         </List>
-      </Grid>
+      </Grid >
     </Grid >
   )
 }

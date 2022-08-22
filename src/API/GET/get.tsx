@@ -1,6 +1,5 @@
 import { DocumentNode, gql, OperationVariables, TypedDocumentNode, useQuery } from "@apollo/client";
 
-
 export const GET_FRASES = gql`
    query Frases {
     frases {
