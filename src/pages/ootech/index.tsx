@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, Collapse, FormControl, Grid, IconButton, InputLabel, List, ListItem, ListItemButton, ListItemText, OutlinedInput, Paper, SelectChangeEvent, Stack } from "@mui/material"
+import { Box, Button, Checkbox, Collapse, FormControl, Grid, IconButton, InputLabel, List, ListItem, ListItemButton, ListItemText, OutlinedInput, Paper, SelectChangeEvent, Stack, Typography } from "@mui/material"
 import { useState } from "react";
 import { MdAdd, MdCreate, MdDelete, MdEdit, MdRemove } from "react-icons/md"
 import { GET_FRASES, Query } from "../../API/GET/get.js";
@@ -10,7 +10,6 @@ import { AddForm } from "./Add/index.js";
 export const OOTechPage = () => {
 
   const frasesDB = Query(GET_FRASES)
-  console.log(frasesDB);
 
   const [checked, setChecked] = useState([1]);
 
@@ -23,7 +22,6 @@ export const OOTechPage = () => {
     } else {
       newChecked.splice(currentIndex, 1);
     }
-
     setChecked(newChecked);
   };
   return (
@@ -32,7 +30,8 @@ export const OOTechPage = () => {
       sx={{
         width: '100%',
         minHeigth: '100%',
-        position: 'relative'
+        position: 'relative',
+        bgcolor: '#fafafa'
       }}>
 
       <AddForm />
@@ -43,15 +42,16 @@ export const OOTechPage = () => {
         sx={{
           minHeight: '150vh',
         }}>
-        <List>
+        <Stack spacing={.8} >
           {
             frasesDB.frases?.slice(1, 40).map((item: IFrase, index: number) => (
 
               <ListItem
                 key={index}
+                sx={{ bgcolor: 'white', p: 4, pr: 0, pl: 4 }}
                 onClick={handleToggle(index)}
                 secondaryAction={
-                  <Paper elevation={0} sx={{ display: 'flex', flexDirection: checked.indexOf(index) ? 'row-reverse' : 'row', alignItems: 'center', flexWrap: 'nowrap', height: 44, p: { xs: 1, md: 2, lg: 2 } }}>
+                  <Paper elevation={0} sx={{ display: 'flex', flexDirection: checked.indexOf(index) !== -1 ? 'row-reverse' : 'row', alignItems: 'center', flexWrap: 'nowrap', height: 44, p: { xs: 1, md: 2, lg: 2 } }}>
                     <Checkbox
                       edge="start"
                       onChange={handleToggle(index)}
@@ -59,7 +59,12 @@ export const OOTechPage = () => {
                       inputProps={{ 'aria-labelledby': item.quote }}
                     />
                     <Collapse orientation="horizontal" in={checked.indexOf(index) !== -1}>
-                      <Paper elevation={checked.indexOf(index) !== -1 ? 1 : 0} sx={{ display: 'flex', flexWrap: 'noWrap' }}>
+                      <Paper elevation={checked.indexOf(index) !== -1 ? 1 : 0} sx={{
+                        display: 'flex',
+                        flexWrap: 'noWrap',
+                        background: '#ffffff1f',
+                        backdropFilter: 'blur(10px)',
+                      }}>
 
                         <ListItemButton>
 
@@ -74,25 +79,37 @@ export const OOTechPage = () => {
                   </Paper>
                 } >
 
-                <Grid container rowSpacing={2} columnSpacing={4}>
-                  <Grid item sx={{ border: '1px solid black' }} >
+                <Grid container justifyContent='start' gap={{ xs: 1, md: 2, lg: 2 }}>
+                  <Grid xs={4} item container  >
+                    <Grid item xs={12} md={6} container alignItems='center' justifyContent={{ xs: 'start', md: 'center', lg: 'center' }}>
 
-                    <ListItemText>{item.area}</ListItemText>
+                      <Typography noWrap>
+
+                        {item.area}
+                      </Typography>
+
+                    </Grid>
+                    <Grid item xs={12} md={6} container alignItems='center' justifyContent={{ xs: 'start', md: 'center', lg: 'center' }}>
+
+                      <Typography noWrap>
+                        {item?.tema}
+                      </Typography>
+
+                    </Grid>
                   </Grid>
-                  <Grid item sx={{ border: '1px solid black' }} >
 
-                    <ListItemText>{item?.tema}</ListItemText>
-                  </Grid>
-                  <Grid item sx={{ border: '1px solid black' }} >
+                  <Grid xs={6} md={7} item >
+                    <Typography >
 
-                    <ListItemText>{item.quote}</ListItemText>
+                      <ListItemText>{item.quote}</ListItemText>
+                    </Typography>
                   </Grid>
 
                 </Grid>
               </ListItem>
             ))
           }
-        </List>
+        </Stack >
       </Grid >
     </Grid >
   )
