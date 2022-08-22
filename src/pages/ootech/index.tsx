@@ -60,32 +60,24 @@ export const OOTechPage = () => {
 
                   <Paper elevation={0} sx={{ width: '100%', boxShadow: checked.indexOf(index) !== -1 ? '12px 1px 10px -5px #1f1f1f1f' : '' }}>
 
-                    <Grid container justifyContent='start' sx={{ p: 2 }} gap={{ xs: 0, md: 2, lg: 2 }}>
-                      <Grid xs={3} item container  >
-                        <Grid item xs={12} md={6} container alignItems='center' justifyContent={{ xs: 'start', md: 'center', lg: 'center' }}>
+                    <Stack direction='row' justifyContent='stretch' sx={{ p: 2, pr: 0, height: '100%' }} gap={{ xs: 0, md: 2, lg: 2 }}>
+                      <Stack sx={{ height: '100%', width: 80 }} justifyContent='space-around'  >
+                        <Typography variant={'body2'} >
+                          {item.area}
+                        </Typography>
+                        <Divider />
+                        <Typography noWrap variant={'body2'} >
+                          {item?.tema}
+                        </Typography>
+                      </Stack>
 
-                          <Typography variant={'body2'} >
-
-                            {item.area}
-                          </Typography>
-
-                        </Grid>
-                        <Grid item xs={12} md={6} container alignItems='center' justifyContent={{ xs: 'start', md: 'center', lg: 'center' }}>
-
-                          <Typography variant={'body2'} >
-                            {item?.tema}
-                          </Typography>
-
-                        </Grid>
-                      </Grid>
-
-                      <Grid xs={9} md={7} item sx={{ p: 4 }} >
-                        <Typography variant={'body1'} noWrap={checked.indexOf(index) !== -1 ? false : true} >
+                      <Stack sx={{ p: 4 }} >
+                        <Typography variant={'body1'}  >
                           {item.quote}
                         </Typography>
-                      </Grid>
+                      </Stack>
 
-                    </Grid>
+                    </Stack>
                   </Paper>
                   <Stack sx={{ display: checked.indexOf(index) !== -1 ? 'flex' : 'none' }}>
 
