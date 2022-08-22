@@ -159,7 +159,7 @@ export const LapsooPage = () => {
                         </Grid>
 
                         <Grid container justifyContent='center' item xs={12} sx={{ height: '15vh', width: '100vw' }}>
-                            <Stack spacing={3.2}>
+                            <Stack spacing={3.2} sx={{ minWidth: '12rem' }}>
                                 <SelectFilter toggleValue={areaToggleValue} handleChange={handleChangeArea} filtros={area}
                                     selectLabel={'filtrar por área'} />
                                 {!!filtrosTemas ? <SelectFilter toggleValue={toggleValue} handleChange={handleChange} filtros={filtrosTemas}

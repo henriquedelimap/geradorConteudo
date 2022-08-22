@@ -44,7 +44,7 @@ export const OOTechPage = () => {
         }}>
         <Stack spacing={.8} >
           {
-            frasesDB.frases?.slice(1, 40).map((item: IFrase, index: number) => (
+            frasesDB.frases?.slice(-40).reverse().map((item: IFrase, index: number) => (
 
               <ListItem
                 key={index}
