@@ -16,7 +16,6 @@ export const Item = (props: Props) => {
   const [deleteFrase, { loading, error, data }] = useMutation(DELETE_FRASE,
     {
       refetchQueries: [
-        { mutation: 'DELETE_FRASE' },
         'Frases'
       ]
     }
