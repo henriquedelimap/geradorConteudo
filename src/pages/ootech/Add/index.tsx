@@ -1,14 +1,18 @@
 import { Grid, Stack } from "@mui/material"
-import { useState } from "react"
+import { Dispatch, SetStateAction, useState } from "react"
 import { BtnAdd } from "./buttom"
 import { InAdd } from "./input"
 import { SelectAdd } from "./select"
+interface Props {
+    setEnvio: Dispatch<SetStateAction<boolean>>
+    envio: boolean
+}
+export const AddForm = (props: Props) => {
 
-export const AddForm = () => {
+    const { envio, setEnvio } = props
     const [inputValue, setInputValue] = useState('')
     const [toggleValue, setToggleValue] = useState('')
     const [areaToggleValue, setAreaToggleValue] = useState('')
-    const [envio, setEnvio] = useState(false)
 
     return (
 

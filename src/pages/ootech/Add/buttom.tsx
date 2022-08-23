@@ -4,17 +4,24 @@ import { Dispatch, SetStateAction } from 'react'
 import { MdAdd } from "react-icons/md"
 import { ADD_FRASE } from "../../../API/POST/post"
 import { filtros } from '../../../Data'
-
+import { Id } from '../../../Utils'
 interface Props {
     inputValue: string
     toggleValue: string
     areaToggleValue: string
     setEnvio: Dispatch<SetStateAction<boolean>>
 }
+
+
 export const BtnAdd = (props: Props) => {
+
     const { inputValue, toggleValue, areaToggleValue, setEnvio } = props
 
-    const [mutateFunction, { data, loading, error }] = useMutation(ADD_FRASE)
+    const [mutateFunction, { data, loading, error }] = useMutation(ADD_FRASE, {
+        onCompleted() {
+            window.location.reload()
+        }
+    })
 
     const validaValores = (areaToggleValue: string, toggleValue: string, inputValue: string) => {
 
@@ -23,20 +30,25 @@ export const BtnAdd = (props: Props) => {
                 variables: {
                     area: areaToggleValue,
                     tema: toggleValue,
-                    quote: inputValue
+                    quote: inputValue,
+                    myId: Id(areaToggleValue, toggleValue, inputValue)
                 }
             })
     }
     if (loading) return <CircularProgress />
     if (error) return <p>erro :/</p>
     if (!!data) return <IconButton
-        onClick={() => mutateFunction({
-            variables: {
-                area: areaToggleValue,
-                tema: toggleValue,
-                quote: inputValue
-            }
-        })}
+        onClick={() => {
+            setEnvio(!!data)
+            mutateFunction({
+                variables: {
+                    area: areaToggleValue,
+                    tema: toggleValue,
+                    quote: inputValue,
+                    myId: Id(areaToggleValue, toggleValue, inputValue)
+                }
+            })
+        }}
         sx={{ height: 44 }}>
         <MdAdd />
     </IconButton>
@@ -56,12 +68,15 @@ export const BtnAdd = (props: Props) => {
     return (
         <IconButton
             onClick={() => {
+
                 // adiciona()
+                setEnvio(!!data)
                 mutateFunction({
                     variables: {
                         area: areaToggleValue,
                         tema: toggleValue,
-                        quote: inputValue
+                        quote: inputValue,
+                        myId: Id(areaToggleValue, toggleValue, inputValue)
                     }
                 })
             }}

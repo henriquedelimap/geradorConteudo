@@ -1,9 +1,18 @@
 export const padronizaTexto = (text: string) => {
-    const a = 'àáäâãèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;'
-    const b = 'aaaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------'
-    const p = new RegExp(a.split('').join('|'), 'g')
-    return text.toString().toLowerCase().trim()
-      .replace(p, c => b.charAt(a.indexOf(c))) // Replace special chars
-      .replace(/&/g, '-and-') // Replace & with 'and'
-      .replace(/[\s\W-]+/g, '-') // Replace spaces, non-word characters and dashes with a single dash (-)
-  }
+  const a = 'àáäâãèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;'
+  const b = 'aaaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------'
+  const p = new RegExp(a.split('').join('|'), 'g')
+  return text.toString().toLowerCase().trim()
+    .replace(p, c => b.charAt(a.indexOf(c))) // Replace special chars
+    .replace(/&/g, '-and-') // Replace & with 'and'
+    .replace(/[\s\W-]+/g, '-') // Replace spaces, non-word characters and dashes with a single dash (-)
+}
+
+export const Id = (a: string, b: string, c: string) => {
+  const d = a[0] + a[1] + a[2] + a[3]
+  const e = b[0] + b[1] + b[2] + b[3]
+  const f = Math.floor(Math.random() * c.length)
+  const g = [...d, f, ...e, ...d, f, ...e].sort(() => Math.random() - .5).join('').toString()
+  const id = `${d}/${e}-${c.length}-${g}`
+  return id
+}

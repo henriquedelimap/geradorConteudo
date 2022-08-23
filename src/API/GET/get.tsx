@@ -6,6 +6,7 @@ export const GET_FRASES = gql`
         quote
         area
         tema
+        myId
     }
 }
 `

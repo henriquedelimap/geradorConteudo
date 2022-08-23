@@ -19,7 +19,8 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
-    "realm-web": "^1.7.1"
+    "realm-web": "^1.7.1",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "@types/node": "^18.7.8",

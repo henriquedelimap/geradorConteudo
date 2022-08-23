@@ -4,13 +4,15 @@ export const ADD_FRASE = gql`
   mutation addFrase(
     $area: String!,
     $tema: String!, 
-    $quote: String!,    
+    $quote: String!,
+    $myId: String!    
   ) {
       addFrase (
     frase: {
       area: $area,
       tema: $tema, 
-      quote: $quote, 
+      quote: $quote,
+      myId: $myId 
     }
   ) {
     area

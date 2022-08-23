@@ -12,12 +12,7 @@ import { SelectFilter } from '../../components/Seletores';
 import { padronizaTexto } from '../../Utils'
 
 
-export interface IFrase {
-    tema: string;
-    id: number | string | null
-    area: string
-    quote: string
-}
+
 
 export const area = [
     {
