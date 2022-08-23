@@ -54,13 +54,13 @@ export const OOTechPage = () => {
                 }}
                 onClick={handleToggle(index)}>
 
-                <Stack direction='row' sx={{ width: '100%' }}>
+                <Stack direction='row' alignItems='center' sx={{ width: '100%' }}>
 
 
 
                   <Paper elevation={0} sx={{ width: '100%', border: checked.indexOf(index) !== -1 ? '1px solid #0066cc' : '1px solid transparent', borderRadius: checked.indexOf(index) !== -1 ? '.4rem 0 0 .4rem' : '.4rem' }}>
 
-                    <Stack direction='row' justifyContent='stretch' sx={{ p: 2, pr: 0, height: '100%' }} gap={{ xs: 0, md: 2, lg: 2 }}>
+                    <Stack direction='row' alignItems='center' justifyContent='stretch' sx={{ p: 2, pr: 0, height: '100%' }} >
                       <Stack sx={{ height: '100%', width: 80, maxHeight: 80 }} justifyContent='space-around'  >
                         <Typography variant={'body2'} >
                           {item.area}
@@ -79,7 +79,7 @@ export const OOTechPage = () => {
 
                     </Stack>
                   </Paper>
-                  <Stack sx={{ display: checked.indexOf(index) !== -1 ? 'flex' : 'none' }}>
+                  <Stack sx={{ display: checked.indexOf(index) !== -1 ? 'flex' : 'none', width: 40 }}>
 
 
                     <Fade in={checked.indexOf(index) !== -1}>
