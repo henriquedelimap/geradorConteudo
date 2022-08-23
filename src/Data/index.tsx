@@ -8,13 +8,13 @@ import {
 } from './imobiliaria'
 
 import {
-  odontologia, 
-  psicologia, 
+  odontologia,
+  psicologia,
   totalSaude
 } from './saude'
 
-import { 
-  marketingDigital, 
+import {
+  marketingDigital,
   totalMarketing
 } from './marketing'
 
@@ -27,54 +27,56 @@ import {
 } from './automotiva'
 
 import {
-  interiores, 
-  paisagismo, 
-  projetos, 
+  interiores,
+  paisagismo,
+  projetos,
   totalArquitetura
 } from './arquitetura'
 
 const filtros: { [key: string]: any } = {
-  imobiliaria: [{
-    label: 'total imobiliária',
-    length: totalImobiliaria.length,
-    quotes: totalImobiliaria.filter(i => i)
-  },
-  {
-    label: 'financiamento',
-    // length: financiamento.length,
-    quotes: financiamento
-  },
-  {
-    label: 'institucional',
-    // // length: institucional.length,
-    quotes: institucional
-  },
-  {
-    label: 'lote',
-    // // length: lote.length,
-    quotes: lote
-  },
-  {
-    label: 'casa',
-    // // length: casa.length,
-    quotes: casa
-  },
-  {
-    label: 'ape',
-    // // length: ape.length,
-    quotes: ape
-  }],
+  imobiliaria: [
+    //   {
+    //   label: 'total imobiliária',
+    //   length: totalImobiliaria.length,
+    //   quotes: totalImobiliaria.filter(i => i)
+    // },
+    {
+      label: 'financiamento',
+      // length: financiamento.length,
+      quotes: financiamento
+    },
+    {
+      label: 'institucional',
+      // // length: institucional.length,
+      quotes: institucional
+    },
+    {
+      label: 'lote',
+      // // length: lote.length,
+      quotes: lote
+    },
+    {
+      label: 'casa',
+      // // length: casa.length,
+      quotes: casa
+    },
+    {
+      label: 'ape',
+      // // length: ape.length,
+      quotes: ape
+    }],
 
-  marketing: [{
-    label: 'total marketing',
-    length: totalMarketing.length,
-    quotes: totalMarketing
-  },
-  {
-    label: 'marketing digital',
-    // length: marketingDigital.length,
-    quotes: marketingDigital
-  }],
+  marketing: [
+    //   {
+    //   label: 'total marketing',
+    //   length: totalMarketing.length,
+    //   quotes: totalMarketing
+    // },
+    {
+      label: 'marketing digital',
+      // length: marketingDigital.length,
+      quotes: marketingDigital
+    }],
   arquitetura: [{
     label: 'todos',
     length: totalArquitetura.length,

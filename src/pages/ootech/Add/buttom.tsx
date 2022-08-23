@@ -2,8 +2,10 @@ import { gql, useMutation } from '@apollo/client'
 import { CircularProgress, IconButton } from "@mui/material"
 import { Dispatch, SetStateAction } from 'react'
 import { MdAdd } from "react-icons/md"
+import { GET_FRASES } from '../../../API/GET/get'
 import { ADD_FRASE } from "../../../API/POST/post"
 import { filtros } from '../../../Data'
+import { IFrase } from '../../../Type'
 import { Id } from '../../../Utils'
 interface Props {
     inputValue: string
@@ -17,16 +19,30 @@ export const BtnAdd = (props: Props) => {
 
     const { inputValue, toggleValue, areaToggleValue, setEnvio } = props
 
-    const [mutateFunction, { data, loading, error }] = useMutation(ADD_FRASE, {
-        onCompleted() {
-            window.location.reload()
+    const [createFrase, { data, loading, error }] = useMutation(ADD_FRASE,
+        {
+            refetchQueries: [
+                { query: GET_FRASES },
+                'Frases'
+            ]
+            // update(cache, { data: { createFrase } }) {
+
+            //     const { frases } = cache.readQuery({ query: GET_FRASES })
+
+            //     cache.writeQuery({
+            //         query: GET_FRASES,
+            //         data: {
+            //             frases: frases?.concat(createFrase)
+            //         }
+            //     })
+            // }
         }
-    })
+    )
 
     const validaValores = (areaToggleValue: string, toggleValue: string, inputValue: string) => {
 
         areaToggleValue === '' && toggleValue === '' && inputValue === '' ? "error"
-            : mutateFunction({
+            : createFrase({
                 variables: {
                     area: areaToggleValue,
                     tema: toggleValue,
@@ -40,7 +56,7 @@ export const BtnAdd = (props: Props) => {
     if (!!data) return <IconButton
         onClick={() => {
             setEnvio(!!data)
-            mutateFunction({
+            createFrase({
                 variables: {
                     area: areaToggleValue,
                     tema: toggleValue,
@@ -53,25 +69,26 @@ export const BtnAdd = (props: Props) => {
         <MdAdd />
     </IconButton>
 
-    // const adiciona = () => {
-    //     const filt = filtros.marketing.map(item => item.quotes.map(frase => mutateFunction({
-    //         variables: {
-    //             area: 'marketing',
-    //             tema: 'marketing digital',
-    //             quote: frase
-    //         }
-    //     }
-    //     )))
-    //     console.log(filt);
+    const adiciona = () => {
+        // console.log(filtros.imobiliaria.map(item => item.quotes))
 
-    // }
+        // const filt = filtros.imobiliaria.map(item => item.quotes.map(frase => createFrase({
+        //     variables: {
+        //         area: 'imobiliaria',
+        //         tema: item.tema,
+        //         quote: frase,
+        //         myId: Id('marketing', 'marketing digital', frase)
+        //     }
+        // }
+        // )))
+        // console.log(filt);
+    }
     return (
         <IconButton
             onClick={() => {
 
                 // adiciona()
-                setEnvio(!!data)
-                mutateFunction({
+                createFrase({
                     variables: {
                         area: areaToggleValue,
                         tema: toggleValue,

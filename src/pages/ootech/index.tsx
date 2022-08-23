@@ -14,7 +14,7 @@ export const OOTechPage = () => {
 
   let frasesDB = Query(GET_FRASES)
 
-  const [checked, setChecked] = useState([1]);
+  const [checked, setChecked] = useState([9999]);
 
   const handleToggle = (value: number) => () => {
     const currentIndex = checked.indexOf(value);
