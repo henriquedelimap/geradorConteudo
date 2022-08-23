@@ -58,10 +58,10 @@ export const OOTechPage = () => {
 
 
 
-                  <Paper elevation={0} sx={{ width: '100%', boxShadow: checked.indexOf(index) !== -1 ? '12px 1px 10px -5px #1f1f1f1f' : '' }}>
+                  <Paper elevation={0} sx={{ width: '100%', border: checked.indexOf(index) !== -1 ? '1px solid #0066cc' : '1px solid transparent', borderRadius: checked.indexOf(index) !== -1 ? '.4rem 0 0 .4rem' : '.4rem' }}>
 
                     <Stack direction='row' justifyContent='stretch' sx={{ p: 2, pr: 0, height: '100%' }} gap={{ xs: 0, md: 2, lg: 2 }}>
-                      <Stack sx={{ height: '100%', width: 80 }} justifyContent='space-around'  >
+                      <Stack sx={{ height: '100%', width: 80, maxHeight: 80 }} justifyContent='space-around'  >
                         <Typography variant={'body2'} >
                           {item.area}
                         </Typography>
