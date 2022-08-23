@@ -13,13 +13,14 @@ interface Props {
 
 export const Item = (props: Props) => {
   const { handleToggle, checked, item, index } = props
-  const [deleteFrase, { loading, error, data }] = useMutation(DELETE_FRASE,
+  const [deleteFrase, { loading, error }] = useMutation(DELETE_FRASE,
     {
       refetchQueries: [
         'Frases'
       ]
     }
   )
+  if (error) return error.message
   return (
     <Box
       key={item.myId}
