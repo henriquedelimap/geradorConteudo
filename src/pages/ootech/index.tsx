@@ -79,10 +79,10 @@ export const OOTechPage = () => {
 
                     </Stack>
                   </Paper>
-                  <Stack sx={{ display: checked.indexOf(index) !== -1 ? 'flex' : 'none', height: '100%' }}>
+                  <Stack sx={{ display: checked.indexOf(index) !== -1 ? 'flex' : 'none', width: 40 }}>
 
 
-                    <Collapse orientation="horizontal" in={checked.indexOf(index) !== -1}>
+                    <Fade in={checked.indexOf(index) !== -1}>
 
                       <Stack sx={{
                         width: '100%',
@@ -106,7 +106,7 @@ export const OOTechPage = () => {
                           <MdEdit color='white' fontSize='18' />
                         </ListItemButton>
                       </Stack>
-                    </Collapse>
+                    </Fade>
                   </Stack>
 
                 </Stack>
