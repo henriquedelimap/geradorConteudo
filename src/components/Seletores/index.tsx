@@ -3,10 +3,7 @@ import { FormControl, InputLabel, Select, MenuItem, ListItemText, SelectChangeEv
 interface Props {
   toggleValue: string
   handleChange: (event: SelectChangeEvent<string>) => void
-  filtros: {
-    label: string
-    length?: string | number
-  }[]
+  filtros: string[]
   selectLabel: string
   height?: string
 }
@@ -22,9 +19,9 @@ export const SelectFilter = ({ toggleValue, handleChange, filtros, selectLabel, 
         onChange={handleChange}
       >
         {
-          filtros?.map(filtro => (
-            <MenuItem value={filtro.label}>
-              <ListItemText sx={{ textTransform: 'lowercase' }}>{filtro.label}  {!!filtro.length ? (`(${filtro.length})`) : ''}</ListItemText>
+          filtros?.map((filtro, index) => (
+            <MenuItem key={index} value={filtro}>
+              <ListItemText sx={{ textTransform: 'lowercase' }}>{filtro}</ListItemText>
             </MenuItem>
 
           ))

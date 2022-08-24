@@ -6,75 +6,66 @@ import { useEffect, useState } from 'react'
 import { Sticky } from '../../Style/index.js';
 import { GET_FRASES, Query } from '../../API/GET/get.js'
 import { LapsooLogo, OOLogo } from '../../OOTECHNOLOGY'
-import { filtros } from '../../Data'
 import { GenerateButton } from './Button';
 import { SelectFilter } from '../../components/Seletores';
 import { padronizaTexto } from '../../Utils'
 
-
-
-
-export const area = [
-    {
-        label: 'imobiliária',
-    },
-    {
-        label: 'marketing',
-    },
-    // {
-    //   label: 'arquitetura',
-    // },
-    // {
-    //   label: 'saúde',
-    // },
-    // {
-    //   label: 'estética',
-    // },
-    // {
-    //   label: 'automotiva',
-    // }
-]
+interface IFrase {
+    area: string
+    tema: string
+    quote: string
+    myId: string
+}
 
 export const LapsooPage = () => {
     const frasesDB = Query(GET_FRASES)
 
     // console.log(frasesDB.frases?.map((item: IFrase) => item.quote));
-
-    const [gerado, setGerado] = useState('inicial')
-    const [toggleValue, setToggleValue] = useState('')
-    const [areaToggleValue, setAreaToggleValue] = useState('')
+    const [gerado, setGerado] = useState<IFrase | null>(null)
+    const [temaValue, setTemaValue] = useState('')
+    const [areaValue, setAreaValue] = useState('')
     const [values, setValues] = useState<string[]>([''])
     const [openLogin, setOpenLogin] = useState(false)
-    const aleatorio = Math.floor(Math.random() * values.length)
     const link = `https://www.instagram.com/lapsootechnology/`
 
-
-
-    let match = Object?.keys(filtros)?.find(filtro => filtro === padronizaTexto(areaToggleValue))
-
-
-    const matchFilter = () => {
-        return filtros[`${match}`]
+    const filtraReapetidos = (arr: string[]) => {
+        return arr?.filter((este, i) => arr.indexOf(este) === i)
     }
 
-    let filtrosTemas = matchFilter()
-    let tema = filtrosTemas?.find((item: any) => item.label === toggleValue)
-    let all = !!filtrosTemas ? filtrosTemas[0].quotes : ''
+    let areas = filtraReapetidos(frasesDB?.frases?.map((item: IFrase) => item.area))
+
+    let total = frasesDB?.frases?.map((item: IFrase) => item).filter((i: any) => i)
+    let itemXarea = frasesDB?.frases?.map((item: IFrase) => item.area === areaValue ? item : '').filter((i: any) => i)
+
+    let temas = filtraReapetidos(itemXarea?.map((item: IFrase) => item.tema))
+
+    let itemXtema = frasesDB?.frases?.map((item: IFrase) => item.tema === temaValue ? item : '').filter((i: any) => i)
 
 
-    useEffect(() => {
-        toggleValue === tema?.label ? setValues(tema.quotes) : setValues(['algumas funcionalidades estão em fase de desenvolvimento. Selecione uma área e um tema para dar início'])
-    }, [toggleValue])
+    let exibeValor = areaValue != '' && temaValue != ''
+        ? itemXtema
+        : areaValue != ''
+            ? itemXarea
+            : total
+
+    const aleatorioInit = Math.floor(Math.random() * total?.length)
+    const aleatorio = Math.floor(Math.random() * exibeValor?.length)
 
     function handleConteudo() {
-        setGerado(prev => prev === values[aleatorio] ? values[aleatorio + 1] : values[aleatorio])
+
+        setGerado(prev => prev === exibeValor[aleatorio] ? exibeValor[aleatorio + 1] : areaValue === '' ? total[aleatorio] : exibeValor[aleatorio])
     }
+    console.log(gerado);
+
+
     function handleChange(event: SelectChangeEvent) {
-        setToggleValue(event.target.value as string)
+        setTemaValue(event.target.value as string)
     }
+
     function handleChangeArea(event: SelectChangeEvent) {
-        setAreaToggleValue(event.target.value as string)
+        setAreaValue(event.target.value as string)
     }
+
     return (
         <Box
             sx={{
@@ -127,11 +118,12 @@ export const LapsooPage = () => {
 
 
                             {
-                                gerado === 'inicial'
+                                gerado === null
                                     ? <LapsooLogo />
                                     : gerado === undefined
                                         ? '🤖​'
-                                        : gerado.toLowerCase()}
+                                        : gerado.quote.toLowerCase()
+                            }
                         </Typography>
                     </Grid>
 
@@ -155,9 +147,9 @@ export const LapsooPage = () => {
 
                         <Grid container justifyContent='center' item xs={12} sx={{ height: '15vh', width: '100vw' }}>
                             <Stack spacing={3.2} sx={{ minWidth: '12rem' }}>
-                                <SelectFilter toggleValue={areaToggleValue} handleChange={handleChangeArea} filtros={area}
+                                <SelectFilter toggleValue={areaValue} handleChange={handleChangeArea} filtros={areas}
                                     selectLabel={'filtrar por área'} />
-                                {!!filtrosTemas ? <SelectFilter toggleValue={toggleValue} handleChange={handleChange} filtros={filtrosTemas}
+                                {!!areaValue ? <SelectFilter toggleValue={temaValue} handleChange={handleChange} filtros={temas}
                                     selectLabel={'filtrar por tema'} /> : ''}
                             </Stack>
                         </Grid>

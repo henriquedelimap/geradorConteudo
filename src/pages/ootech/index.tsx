@@ -5,7 +5,6 @@ import { GET_FRASES, Query } from "../../API/GET/get.js";
 import { SelectFilter } from "../../components/Seletores/index.js";
 import { Sticky } from '../../Style/index.js';
 import { IFrase } from "../../Type/index.js";
-import { area } from "../lapsoo/index.js";
 import { AddForm } from "./Add/index.js";
 import { Item } from "./Item/index.js";
 
@@ -49,7 +48,7 @@ export const OOTechPage = () => {
           {
             frasesDB.frases?.slice(-40).reverse().map((item: IFrase, index: number) => (
 
-              <Item handleToggle={handleToggle} index={index} checked={checked} item={item} />
+              <Item key={item.myId} handleToggle={handleToggle} index={index} checked={checked} item={item} />
             ))
           }
         </Stack >

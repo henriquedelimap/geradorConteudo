@@ -19,7 +19,7 @@ export function Query(getFrases: DocumentNode) {
     if (error) {
         return <p>erro :/</p>
     }
-    console.log(data, "visitando aqui o dado");
+    // console.log(data, "visitando aqui o dado");
 
     return data
 }

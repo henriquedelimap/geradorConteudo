@@ -16,3 +16,22 @@ export const Id = (a: string, b: string, c: string) => {
   const id = `${d}/${e}-${c.length}-${g}`
   return id
 }
+
+
+// export const adiciona = () => {
+//     // console.log(filtros.imobiliaria.map(item => item.quotes))
+//     const filt = filtros.marketing.map(item => {
+//         const newItems = item.quotes.map(frase => {
+//             return createFrase({
+//                 variables: {
+//                     area: 'marketing',
+//                     tema: item.label,
+//                     quote: frase,
+//                     myId: Id('marketing', item.label, frase)
+//                 }
+//             })
+//         })
+//     }
+//     )
+//     console.log(filt);
+// }

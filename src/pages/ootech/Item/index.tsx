@@ -20,7 +20,7 @@ export const Item = (props: Props) => {
       ]
     }
   )
-  if (error) return error.message
+  // if (error) return console.log(Error)
   return (
     <Box
       key={item.myId}
