@@ -1,4 +1,4 @@
-import { Button, Grid, IconButton, OutlinedInput, Typography, Stack, Box, Paper, Chip, ToggleButtonGroup, ToggleButton, Select, SelectChangeEvent, MenuItem, ListItemText, FormControl, InputLabel, Collapse, Fade, Slide } from '@mui/material'
+import { Button, Grid, IconButton, OutlinedInput, Typography, Stack, Box, Paper, Chip, ToggleButtonGroup, ToggleButton, Select, SelectChangeEvent, MenuItem, ListItemText, FormControl, InputLabel, Collapse, Fade, Slide, CircularProgress } from '@mui/material'
 import styled from "@emotion/styled";
 import { MdDone, MdReplay } from 'react-icons/md'
 import { useEffect, useState } from 'react'
@@ -8,7 +8,7 @@ import { GET_FRASES, Query } from '../../API/GET/get.js'
 import { LapsooLogo, OOLogo } from '../../OOTECHNOLOGY'
 import { GenerateButton } from './Button';
 import { SelectFilter } from '../../components/Seletores';
-import { padronizaTexto } from '../../Utils'
+import { useQuery } from '@apollo/client';
 
 interface IFrase {
     area: string
@@ -18,7 +18,8 @@ interface IFrase {
 }
 
 export const LapsooPage = () => {
-    const frasesDB = Query(GET_FRASES)
+
+
 
     // console.log(frasesDB.frases?.map((item: IFrase) => item.quote));
     const [gerado, setGerado] = useState<IFrase | null>(null)
@@ -32,15 +33,26 @@ export const LapsooPage = () => {
         return arr?.filter((este, i) => arr.indexOf(este) === i)
     }
 
-    let areas = filtraReapetidos(frasesDB?.frases?.map((item: IFrase) => item.area))
 
-    let total = frasesDB?.frases?.map((item: IFrase) => item).filter((i: any) => i)
-    let itemXarea = frasesDB?.frases?.map((item: IFrase) => item.area === areaValue ? item : '').filter((i: any) => i)
+    const { loading, error, data } = useQuery(GET_FRASES)
+    if (loading) {
+        return <Stack alignItems='center' justifyContent='center' sx={{ width: '100vw', height: '100vh' }}>
+            <CircularProgress />
+        </Stack>
+    }
+    if (error) {
+        return <p>erro :/</p>
+    }
+
+
+    let areas = filtraReapetidos(data?.frases?.map((item: IFrase) => item.area))
+
+    let total = data?.frases?.map((item: IFrase) => item).filter((i: any) => i)
+    let itemXarea = data?.frases?.map((item: IFrase) => item.area === areaValue ? item : '').filter((i: any) => i)
 
     let temas = filtraReapetidos(itemXarea?.map((item: IFrase) => item.tema))
 
-    let itemXtema = frasesDB?.frases?.map((item: IFrase) => item.tema === temaValue ? item : '').filter((i: any) => i)
-
+    let itemXtema = data?.frases?.map((item: IFrase) => item.tema === temaValue ? item : '').filter((i: any) => i)
 
     let exibeValor = areaValue != '' && temaValue != ''
         ? itemXtema
@@ -55,17 +67,13 @@ export const LapsooPage = () => {
 
         setGerado(prev => prev === exibeValor[aleatorio] ? exibeValor[aleatorio + 1] : areaValue === '' ? total[aleatorio] : exibeValor[aleatorio])
     }
-    console.log(gerado);
-
 
     function handleChange(event: SelectChangeEvent) {
         setTemaValue(event.target.value as string)
     }
-
     function handleChangeArea(event: SelectChangeEvent) {
         setAreaValue(event.target.value as string)
     }
-
     return (
         <Box
             sx={{
@@ -87,9 +95,7 @@ export const LapsooPage = () => {
                         width: '100vw',
                         height: '100vh'
                     }}>
-
                     {/* CONTEÚDO */}
-
                     <Grid
                         item
                         xs={12}
@@ -126,9 +132,7 @@ export const LapsooPage = () => {
                             }
                         </Typography>
                     </Grid>
-
                     {/* GERAR CONTEÚDO */}
-
                     <Grid
                         item
                         container
@@ -140,11 +144,9 @@ export const LapsooPage = () => {
                             height: '50vh',
                             pb: 12
                         }} >
-
                         <Grid item container alignItems='center' justifyContent='center' xs={12} sx={{ height: '8vh' }}>
                             <GenerateButton handleConteudo={handleConteudo} text={'gerar conteúdo'} />
                         </Grid>
-
                         <Grid container justifyContent='center' item xs={12} sx={{ height: '15vh', width: '100vw' }}>
                             <Stack spacing={3.2} sx={{ minWidth: '12rem' }}>
                                 <SelectFilter toggleValue={areaValue} handleChange={handleChangeArea} filtros={areas}
@@ -153,9 +155,7 @@ export const LapsooPage = () => {
                                     selectLabel={'filtrar por tema'} /> : ''}
                             </Stack>
                         </Grid>
-
                     </Grid>
-
                 </Grid>
             </Paper>
 
