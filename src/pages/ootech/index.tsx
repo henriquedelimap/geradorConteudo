@@ -85,7 +85,6 @@ export const OOTechPage = () => {
         itemXtema={itemXtema}
         envio={envio}
         setEnvio={setEnvio} />
-
       <Grid
         item
         xs={12}
@@ -95,7 +94,6 @@ export const OOTechPage = () => {
         <Stack spacing={.8} sx={{ p: { xs: .5, md: 2, lg: 2 } }} >
           {
             data.frases?.slice(0).reverse().map((item: IFrase, index: number) => (
-
               <Item key={item.myId} handleToggle={handleToggle} index={index} checked={checked} item={item} />
             ))
           }

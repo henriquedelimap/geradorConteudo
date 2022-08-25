@@ -1,5 +1,5 @@
 import { Autocomplete, AutocompleteProps, SelectChangeEvent, Stack, TextField } from "@mui/material"
-import { useState, Dispatch, SetStateAction, useEffect } from "react"
+import { useState, Dispatch, SetStateAction, useEffect, SyntheticEvent } from "react"
 import { SelectFilter } from "../../../components/Seletores"
 
 interface Props {
@@ -11,6 +11,10 @@ interface Props {
     itemXarea: any
     temas: string[]
     itemXtema: any
+}
+interface IChange {
+    event: Event | undefined
+    newValue: any
 }
 export const SelectAdd = (props: Props) => {
     const [novoTema, setNovoTema] = useState('')
@@ -56,11 +60,10 @@ export const SelectAdd = (props: Props) => {
                 <Autocomplete
                     value={areaToggleValue}
 
-                    onChange={(event, newValue: any) => {
-                        setAreaToggleValue(newValue?.label as string);
-                    }}
+                    onChange={(event, newValue) => setAreaToggleValue(newValue as string)}
                     inputValue={inputValue}
                     onInputChange={(event, newInputValue) => {
+                        setAreaToggleValue(newInputValue)
                         setInputValue(newInputValue);
                     }}
                     size='small'
@@ -83,9 +86,10 @@ export const SelectAdd = (props: Props) => {
 
                     value={toggleValue}
 
-                    onChange={(event, newValue: any) => setToggleValue(newValue.label as string)}
+                    onChange={(event, newValue) => setToggleValue(newValue as string)}
                     inputValue={inputValueTema}
                     onInputChange={(event, newInputValue) => {
+                        setToggleValue(newInputValue)
                         setInputValueTema(newInputValue);
                     }}
 
