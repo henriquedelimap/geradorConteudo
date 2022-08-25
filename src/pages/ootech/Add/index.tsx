@@ -53,7 +53,7 @@ export const AddForm = (props: Props) => {
                 backdropFilter: 'blur(32px)',
                 boxShadow: '0px 12px 8px -20px #111111'
             }}
-            spacing={2}
+            spacing={{ xs: .5, md: 2, lg: 2 }}
         >
             <SelectAdd areas={areas} itemXarea={itemXarea} temas={temas} itemXtema={itemXtema} toggleValue={toggleValue} setToggleValue={setToggleValue} areaToggleValue={areaToggleValue} setAreaToggleValue={setAreaToggleValue} />
             <Stack direction='row'>
