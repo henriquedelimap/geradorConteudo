@@ -39,10 +39,10 @@ export const SelectAdd = (props: Props) => {
 
     const optionsAreas = areas?.map(item => {
         return {
-
             label: item
         }
     })
+
     const optionsTemas = temas?.map(item => {
         return {
             label: item
@@ -50,51 +50,45 @@ export const SelectAdd = (props: Props) => {
     })
 
     return (
-        <>
-            <div>
-                <Autocomplete
-                    value={areaToggleValue}
+        <Stack direction='row' sx={{ width: '100vw' }} spacing={2}>
+            <Autocomplete
+                value={areaToggleValue}
 
-                    // onChange={(event, newValue) => setAreaToggleValue(newValue as string)}
-                    inputValue={inputValue}
-                    onInputChange={(event, newInputValue) => {
-                        setAreaToggleValue(newInputValue)
-                        setInputValue(newInputValue);
-                    }}
-                    size='small'
-                    id="combo-box-demo"
-                    sx={{ width: '6rem' }}
+                inputValue={inputValue}
+                onInputChange={(event, newInputValue) => {
+                    setAreaToggleValue(newInputValue)
+                    setInputValue(newInputValue);
+                }}
+                size='small'
+                id="combo-box-demo"
+                sx={{ width: '100%' }}
 
-                    options={optionsAreas}
-                    freeSolo
-                    renderInput={(params) => <TextField {...params} label="área" />}
-                />
-
-            </div>
-            <div>
-
-                <Autocomplete
-                    disablePortal
-                    id="combo-box-demo"
-
-                    size='small'
-
-                    value={toggleValue}
-
-                    inputValue={inputValueTema}
-                    onInputChange={(event, newInputValue) => {
-                        setToggleValue(newInputValue)
-                        setInputValueTema(newInputValue);
-                    }}
+                options={optionsAreas}
+                freeSolo
+                renderInput={(params) => <TextField  {...params} label="área" />}
+            />
 
 
-                    options={optionsTemas}
-                    freeSolo
-                    sx={{ width: '6rem' }}
-                    renderInput={(params) => <TextField {...params} label="tema" />}
-                />
+            <Autocomplete
+                disablePortal
+                id="combo-box-demo"
 
-            </div>
-        </>
+                size='small'
+
+                value={toggleValue}
+
+                inputValue={inputValueTema}
+                onInputChange={(event, newInputValue) => {
+                    setToggleValue(newInputValue)
+                    setInputValueTema(newInputValue);
+                }}
+                sx={{ width: '100%' }}
+
+                options={optionsTemas}
+                freeSolo
+                renderInput={(params) => <TextField {...params} label="tema" />}
+            />
+
+        </Stack>
     )
 }
