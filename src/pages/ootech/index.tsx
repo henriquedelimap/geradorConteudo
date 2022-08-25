@@ -60,10 +60,6 @@ export const OOTechPage = () => {
     }
     setChecked(newChecked);
   };
-  const [qntFrase, setQntFrase] = useState<number>(40)
-  const adicionaMaisFrases = useEffect(() => {
-    return setQntFrase(qntFrase + 40)
-  }, [qntFrase])
 
   return (
     <Grid
@@ -97,14 +93,14 @@ export const OOTechPage = () => {
         }}>
         <Stack spacing={.8} sx={{ p: { xs: .5, md: 2, lg: 2 } }} >
           {
-            data.frases?.slice(-qntFrase).reverse().map((item: IFrase, index: number) => (
+            data.frases?.slice(-40).reverse().map((item: IFrase, index: number) => (
               <Item key={item.myId} handleToggle={handleToggle} index={index} checked={checked} item={item} />
             ))
           }
         </Stack >
       </Grid >
       <Grid sx={{ p: 8 }} container justifyContent='center' item xs={12}>
-        <IconButton onClick={() => adicionaMaisFrases}>
+        <IconButton >
           <MdArrowDownward fontSize={40} />
         </IconButton>
       </Grid>
