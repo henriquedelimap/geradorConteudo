@@ -185,42 +185,40 @@ export const LapsooPage = () => {
 
 
                         <Modal sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} open={openLogin} onClose={() => setOpenLogin(!openLogin)}>
-                            <Fade in={openLogin} >
+                            <Stack
+                                alignItems='center'
+                                justifyContent='space-between'
+                                sx={{
+                                    height: '100%',
+                                    width: { xs: '70%', md: '40%', lg: '40%' },
+                                    pb: 4.6,
+                                    pt: 10.8,
+                                    background: 'rgba(232, 245, 255, 0.41)',
+                                    backdropFilter: 'blur(8px)',
+                                }}
+                            >
+                                <LapsooLogo />
                                 <Stack
-                                    alignItems='center'
-                                    justifyContent='space-between'
-                                    sx={{
-                                        height: '100%',
-                                        width: { xs: '70%', md: '40%', lg: '40%' },
-                                        pb: 4.6,
-                                        pt: 10.8,
-                                        background: 'rgba(232, 245, 255, 0.41)',
-                                        backdropFilter: 'blur(8px)',
-                                    }}
+                                    spacing={2}
                                 >
-                                    <LapsooLogo />
-                                    <Stack
-                                        spacing={2}
-                                    >
 
-                                        <FormControl>
-                                            <OutlinedInput size='small' />
-                                        </FormControl>
+                                    <FormControl>
+                                        <OutlinedInput size='small' />
+                                    </FormControl>
 
-                                        <FormControl>
-                                            <OutlinedInput size='small' />
+                                    <FormControl>
+                                        <OutlinedInput size='small' />
 
-                                        </FormControl>
-                                        <Button>
-                                            <Typography>
-                                                acessar
-                                            </Typography>
-                                        </Button>
-                                    </Stack>
-                                    <OOLogo />
+                                    </FormControl>
+                                    <Button>
+                                        <Typography>
+                                            acessar
+                                        </Typography>
+                                    </Button>
                                 </Stack>
+                                <OOLogo />
+                            </Stack>
 
-                            </Fade>
                         </Modal>
 
 
