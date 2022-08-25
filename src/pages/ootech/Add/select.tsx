@@ -52,24 +52,27 @@ export const SelectAdd = (props: Props) => {
         <>
 
 
-            <Autocomplete
-                value={areaToggleValue}
+            <div>
+                <Autocomplete
+                    value={areaToggleValue}
 
-                onChange={(event, newValue: any) => {
-                    setAreaToggleValue(newValue?.label as string);
-                }}
-                inputValue={inputValue}
-                onInputChange={(event, newInputValue) => {
-                    setInputValue(newInputValue);
-                }}
-                size='small'
-                id="combo-box-demo"
-                sx={{ width: '6rem' }}
+                    onChange={(event, newValue: any) => {
+                        setAreaToggleValue(newValue?.label as string);
+                    }}
+                    inputValue={inputValue}
+                    onInputChange={(event, newInputValue) => {
+                        setInputValue(newInputValue);
+                    }}
+                    size='small'
+                    id="combo-box-demo"
+                    sx={{ width: '6rem' }}
 
-                options={options}
-                freeSolo
-                renderInput={(params) => <TextField {...params} label="ii" />}
-            />
+                    options={options}
+                    freeSolo
+                    renderInput={(params) => <TextField {...params} label="ii" />}
+                />
+
+            </div>
             <div>
 
                 <Autocomplete
