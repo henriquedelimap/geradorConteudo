@@ -60,7 +60,7 @@ export const SelectAdd = (props: Props) => {
                 <Autocomplete
                     value={areaToggleValue}
 
-                    onChange={(event, newValue) => setAreaToggleValue(newValue as string)}
+                    // onChange={(event, newValue) => setAreaToggleValue(newValue as string)}
                     inputValue={inputValue}
                     onInputChange={(event, newInputValue) => {
                         setAreaToggleValue(newInputValue)
@@ -86,7 +86,7 @@ export const SelectAdd = (props: Props) => {
 
                     value={toggleValue}
 
-                    onChange={(event, newValue) => setToggleValue(newValue as string)}
+                    // onChange={(event, newValue) => setToggleValue(newValue as string)}
                     inputValue={inputValueTema}
                     onInputChange={(event, newInputValue) => {
                         setToggleValue(newInputValue)
