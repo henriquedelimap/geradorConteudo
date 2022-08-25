@@ -192,7 +192,7 @@ export const LapsooPage = () => {
                                     sx={{
                                         height: '100%',
                                         width: { xs: '70%', md: '40%', lg: '40%' },
-                                        pb: 4.4,
+                                        pb: 4.6,
                                         pt: 10.8,
                                         background: 'rgba(232, 245, 255, 0.41)',
                                         backdropFilter: 'blur(8px)',
