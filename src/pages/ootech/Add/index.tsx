@@ -56,7 +56,7 @@ export const AddForm = (props: Props) => {
             spacing={{ xs: .5, md: 2, lg: 2 }}
         >
             <SelectAdd areas={areas} itemXarea={itemXarea} temas={temas} itemXtema={itemXtema} toggleValue={toggleValue} setToggleValue={setToggleValue} areaToggleValue={areaToggleValue} setAreaToggleValue={setAreaToggleValue} />
-            <Stack direction='row'>
+            <Stack direction='row' sx={{ width: '100%' }}>
 
                 <InAdd inputValue={inputValue} setInputValue={setInputValue} />
                 <BtnAdd setEnvio={setEnvio} inputValue={inputValue} toggleValue={toggleValue} areaToggleValue={areaToggleValue} />

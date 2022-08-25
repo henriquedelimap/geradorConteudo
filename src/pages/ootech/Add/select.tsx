@@ -50,10 +50,9 @@ export const SelectAdd = (props: Props) => {
     })
 
     return (
-        <Stack direction='row' sx={{ width: '100%' }} spacing={{ xs: .5, md: 2, lg: 2 }}>
+        <Stack direction='row' sx={{ width: { xs: '100%', md: '50%', lg: '50%' } }} spacing={{ xs: .5, md: 2, lg: 2 }}>
             <Autocomplete
                 value={areaToggleValue}
-
                 inputValue={inputValue}
                 onInputChange={(event, newInputValue) => {
                     setAreaToggleValue(newInputValue)
@@ -62,7 +61,6 @@ export const SelectAdd = (props: Props) => {
                 size='small'
                 id="combo-box-demo"
                 sx={{ width: '100%' }}
-
                 options={optionsAreas}
                 freeSolo
                 renderInput={(params) => <TextField  {...params} label="área" />}
@@ -72,18 +70,14 @@ export const SelectAdd = (props: Props) => {
             <Autocomplete
                 disablePortal
                 id="combo-box-demo"
-
                 size='small'
-
                 value={toggleValue}
-
                 inputValue={inputValueTema}
                 onInputChange={(event, newInputValue) => {
                     setToggleValue(newInputValue)
                     setInputValueTema(newInputValue);
                 }}
                 sx={{ width: '100%' }}
-
                 options={optionsTemas}
                 freeSolo
                 renderInput={(params) => <TextField {...params} label="tema" />}
