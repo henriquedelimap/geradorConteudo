@@ -196,7 +196,6 @@ export const LapsooPage = () => {
                                         pt: 10.8,
                                         background: 'rgba(232, 245, 255, 0.41)',
                                         backdropFilter: 'blur(12px)',
-                                        boxShadow: '0px 0px 100px -40px #ffffffaf'
                                     }}
                                 >
                                     <LapsooLogo />
