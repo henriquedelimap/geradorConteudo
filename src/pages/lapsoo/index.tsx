@@ -9,30 +9,21 @@ import { LapsooLogo, OOLogo } from '../../OOTECHNOLOGY'
 import { GenerateButton } from './Button';
 import { SelectFilter } from '../../components/Seletores';
 import { useQuery } from '@apollo/client';
+import { IFrase } from '../../Type/index.js';
 
-interface IFrase {
-    area: string
-    tema: string
-    quote: string
-    myId: string
-}
+
 
 export const LapsooPage = () => {
 
-
-
-    // console.log(frasesDB.frases?.map((item: IFrase) => item.quote));
     const [gerado, setGerado] = useState<IFrase | null>(null)
     const [temaValue, setTemaValue] = useState('')
     const [areaValue, setAreaValue] = useState('')
-    const [values, setValues] = useState<string[]>([''])
     const [openLogin, setOpenLogin] = useState(false)
     const link = `https://www.instagram.com/lapsootechnology/`
 
     const filtraReapetidos = (arr: string[]) => {
         return arr?.filter((este, i) => arr.indexOf(este) === i)
     }
-
 
     const { loading, error, data } = useQuery(GET_FRASES)
     if (loading) {
@@ -43,7 +34,6 @@ export const LapsooPage = () => {
     if (error) {
         return <p>erro :/</p>
     }
-
 
     let areas = filtraReapetidos(data?.frases?.map((item: IFrase) => item.area))
 
