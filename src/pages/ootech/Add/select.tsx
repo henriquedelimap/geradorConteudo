@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client"
-import { Autocomplete, AutocompleteProps, SelectChangeEvent, Stack, TextField } from "@mui/material"
+import { Autocomplete, AutocompleteProps, LinearProgress, SelectChangeEvent, Stack, TextField } from "@mui/material"
 import { useState, Dispatch, SetStateAction, useEffect, SyntheticEvent } from "react"
 import { GET_FRASES } from "../../../API/GET/get"
 import { SelectFilter } from "../../../components/Seletores"
@@ -16,28 +16,20 @@ interface Props {
     temas: string[]
     itemXtema: any
 }
-interface IChange {
-    event: Event | undefined
-    newValue: any
-}
+
 export const SelectAdd = (props: Props) => {
-    const [novoTema, setNovoTema] = useState('')
-
-
-    const [inputValue, setInputValue] = useState('');
-    const [valueTema, setValueTema] = useState<string | null>();
-    const [inputValueTema, setInputValueTema] = useState('');
-
     const {
-        itemXtema,
         toggleValue,
         setToggleValue,
         areaToggleValue,
         setAreaToggleValue } = props
-    const area: string[] = []
 
-
+    const [inputValue, setInputValue] = useState('');
+    const [inputValueTema, setInputValueTema] = useState('');
     const { loading, error, data } = useQuery(GET_FRASES)
+
+    if (loading) return <LinearProgress />
+    if (error) return <p>erro :/</p>
 
     let areas = filtraReapetidos(data?.frases?.map((item: IFrase) => item.area))
     let itemXarea = data?.frases?.map((item: IFrase) => item.area === areaToggleValue ? item : '').filter((i: any) => i)
@@ -57,18 +49,8 @@ export const SelectAdd = (props: Props) => {
         }
     })
 
-    function handleChange(newValue: SetStateAction<string>) {
-        setToggleValue(newValue)
-    }
-    function handleChangeArea(newValue: SetStateAction<string>) {
-        setAreaToggleValue(newValue)
-    }
-    console.log(temas);
-
     return (
         <>
-
-
             <div>
                 <Autocomplete
                     value={areaToggleValue}
@@ -99,7 +81,6 @@ export const SelectAdd = (props: Props) => {
 
                     value={toggleValue}
 
-                    // onChange={(event, newValue) => setToggleValue(newValue as string)}
                     inputValue={inputValueTema}
                     onInputChange={(event, newInputValue) => {
                         setToggleValue(newInputValue)
@@ -114,16 +95,6 @@ export const SelectAdd = (props: Props) => {
                 />
 
             </div>
-            {/* <SelectFilter
-                toggleValue={areaToggleValue}
-                handleChange={handleChangeArea}
-                filtros={area}
-                selectLabel={'área'} />
-            <SelectFilter
-                toggleValue={toggleValue}
-                handleChange={handleChange}
-                filtros={area}
-                selectLabel={'tema'} /> */}
         </>
     )
 }
