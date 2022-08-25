@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { Box, Button, Checkbox, CircularProgress, Collapse, Divider, Fade, FormControl, Grid, IconButton, InputLabel, List, ListItem, ListItemButton, ListItemText, OutlinedInput, Paper, SelectChangeEvent, Stack, Typography } from "@mui/material"
 import { useEffect, useState } from "react";
-import { MdAdd, MdCreate, MdDelete, MdEdit, MdRemove } from "react-icons/md"
+import { MdAdd, MdArrowDownward, MdCreate, MdDelete, MdEdit, MdRemove } from "react-icons/md"
 import { GET_FRASES, Query } from "../../API/GET/get.js";
 import { SelectFilter } from "../../components/Seletores/index.js";
 import { Sticky } from '../../Style/index.js';
@@ -60,6 +60,12 @@ export const OOTechPage = () => {
     }
     setChecked(newChecked);
   };
+  const [qntFrase, setQntFrase] = useState<number>(40)
+  const adicionaMaisFrases = () => {
+    console.log(qntFrase);
+    return setQntFrase(qntFrase + 40)
+  }
+
   return (
     <Grid
       container
@@ -92,12 +98,17 @@ export const OOTechPage = () => {
         }}>
         <Stack spacing={.8} sx={{ p: { xs: .5, md: 2, lg: 2 } }} >
           {
-            data.frases?.slice(-40).reverse().map((item: IFrase, index: number) => (
+            data.frases?.slice(-qntFrase).reverse().map((item: IFrase, index: number) => (
               <Item key={item.myId} handleToggle={handleToggle} index={index} checked={checked} item={item} />
             ))
           }
         </Stack >
       </Grid >
+      <Grid sx={{ p: 8 }} container justifyContent='center' item xs={12}>
+        <IconButton onClick={() => adicionaMaisFrases()}>
+          <MdArrowDownward fontSize={40} />
+        </IconButton>
+      </Grid>
     </Grid >
   )
 }

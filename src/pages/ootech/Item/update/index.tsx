@@ -26,7 +26,6 @@ export const UpdateFrase = (props: Props) => {
         tema: newTema,
         quote: newQuote
     }
-    console.log(newFrase);
     if (loading) return <CircularProgress />
 
 
