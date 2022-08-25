@@ -37,11 +37,11 @@ export const OOTechPage = () => {
 
   let areas = filtraReapetidos(data?.frases?.map((item: IFrase) => item.area))
 
-  let itemXarea = data?.frases?.map((item: IFrase) => item.area).filter((i: any) => i)
+  let itemXarea = data?.frases?.map((item: IFrase) => item.area === areaToggleValue ? item : '').filter((i: any) => i)
 
   let temas = filtraReapetidos(itemXarea?.map((item: IFrase) => item.tema))
 
-  let itemXtema = data?.frases?.map((item: IFrase) => item.tema).filter((i: any) => i)
+  let itemXtema = data?.frases?.map((item: IFrase) => item.tema === toggleValue ? item : '').filter((i: any) => i)
 
 
   let exibeValor = areaToggleValue != '' && toggleValue != ''
@@ -49,6 +49,7 @@ export const OOTechPage = () => {
     : areaToggleValue != ''
       ? itemXarea
       : total
+  console.log(exibeValor);
 
   const handleToggle = (value: number) => () => {
     const currentIndex = checked.indexOf(value);
@@ -93,7 +94,7 @@ export const OOTechPage = () => {
         }}>
         <Stack spacing={.8} sx={{ p: { xs: .5, md: 2, lg: 2 } }} >
           {
-            data.frases?.slice(-40).reverse().map((item: IFrase, index: number) => (
+            exibeValor.slice(-40).reverse().map((item: IFrase, index: number) => (
               <Item key={item.myId} handleToggle={handleToggle} index={index} checked={checked} item={item} />
             ))
           }
