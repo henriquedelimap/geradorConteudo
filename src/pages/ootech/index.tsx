@@ -49,7 +49,6 @@ export const OOTechPage = () => {
     : areaToggleValue != ''
       ? itemXarea
       : total
-  console.log(exibeValor);
 
   const handleToggle = (value: number) => () => {
     const currentIndex = checked.indexOf(value);
