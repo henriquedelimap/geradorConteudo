@@ -1,10 +1,11 @@
 import { useMutation } from "@apollo/client"
-import { Box, Stack, Paper, Typography, Divider, Fade, ListItemButton } from "@mui/material"
+import { Box, Stack, Paper, Typography, Divider, Fade, ListItemButton, LinearProgress } from "@mui/material"
 import { MdRemove, MdEdit } from "react-icons/md"
 import { DELETE_FRASE } from "../../../API/DELETE/delete"
 import { IFrase } from "../../../Type"
 
 interface Props {
+
   handleToggle: (value: number) => () => void
   index: number
   checked: number[]
@@ -12,7 +13,14 @@ interface Props {
 }
 
 export const Item = (props: Props) => {
-  const { handleToggle, checked, item, index } = props
+  const {
+    handleToggle,
+    checked,
+    item,
+    index,
+
+  } = props
+
   const [deleteFrase, { loading, error }] = useMutation(DELETE_FRASE,
     {
       refetchQueries: [
@@ -21,6 +29,7 @@ export const Item = (props: Props) => {
     }
   )
   // if (error) return console.log(Error)
+  if (loading) return <LinearProgress />
   return (
     <Box
       key={item.myId}

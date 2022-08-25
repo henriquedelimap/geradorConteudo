@@ -5,14 +5,37 @@ import { InAdd } from "./input"
 import { SelectAdd } from "./select"
 interface Props {
     setEnvio: Dispatch<SetStateAction<boolean>>
-    envio: boolean
+    envio: boolean,
+    total: any
+    areas: string[]
+    itemXarea: any
+    temas: string[]
+    itemXtema: any
+    toggleValue: string
+    setToggleValue: Dispatch<SetStateAction<string>>
+    areaToggleValue: string
+    setAreaToggleValue: Dispatch<SetStateAction<string>>
+    inputValue: string
+    setInputValue: Dispatch<SetStateAction<string>>
 }
 export const AddForm = (props: Props) => {
 
-    const { envio, setEnvio } = props
-    const [inputValue, setInputValue] = useState('')
-    const [toggleValue, setToggleValue] = useState('')
-    const [areaToggleValue, setAreaToggleValue] = useState('')
+    const {
+        envio,
+        setEnvio,
+        total,
+        areas,
+        itemXarea,
+        temas,
+        itemXtema,
+        toggleValue,
+        setToggleValue,
+        areaToggleValue,
+        setAreaToggleValue,
+        inputValue,
+        setInputValue
+    } = props
+
 
     return (
 
@@ -32,7 +55,7 @@ export const AddForm = (props: Props) => {
             }}
             spacing={2}
         >
-            <SelectAdd toggleValue={toggleValue} setToggleValue={setToggleValue} areaToggleValue={areaToggleValue} setAreaToggleValue={setAreaToggleValue} />
+            <SelectAdd areas={areas} itemXarea={itemXarea} temas={temas} itemXtema={itemXtema} toggleValue={toggleValue} setToggleValue={setToggleValue} areaToggleValue={areaToggleValue} setAreaToggleValue={setAreaToggleValue} />
             <InAdd inputValue={inputValue} setInputValue={setInputValue} />
             <BtnAdd setEnvio={setEnvio} inputValue={inputValue} toggleValue={toggleValue} areaToggleValue={areaToggleValue} />
         </Stack>

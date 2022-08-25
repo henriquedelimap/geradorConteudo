@@ -35,9 +35,10 @@ export const LapsooPage = () => {
         return <p>erro :/</p>
     }
 
+    let total = data?.frases?.map((item: IFrase) => item).filter((i: IFrase) => i)
+
     let areas = filtraReapetidos(data?.frases?.map((item: IFrase) => item.area))
 
-    let total = data?.frases?.map((item: IFrase) => item).filter((i: any) => i)
     let itemXarea = data?.frases?.map((item: IFrase) => item.area === areaValue ? item : '').filter((i: any) => i)
 
     let temas = filtraReapetidos(itemXarea?.map((item: IFrase) => item.tema))
@@ -50,7 +51,7 @@ export const LapsooPage = () => {
             ? itemXarea
             : total
 
-    const aleatorioInit = Math.floor(Math.random() * total?.length)
+
     const aleatorio = Math.floor(Math.random() * exibeValor?.length)
 
     function handleConteudo() {

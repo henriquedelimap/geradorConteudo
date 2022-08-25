@@ -9,10 +9,12 @@ export const padronizaTexto = (text: string) => {
 }
 
 export const Id = (a: string, b: string, c: string) => {
+  console.log(a, b, c);
+
   const d = a[0] + a[1] + a[2] + a[3]
   const e = b[0] + b[1] + b[2] + b[3]
   const f = Math.floor(Math.random() * c.length)
-  const g = [...d, f, ...e, ...d, f, ...e].sort(() => Math.random() - .5).join('').toString()
+  const g = [d, f, e, d, f, e].sort(() => Math.random() - .5).join('').toString()
   const id = `${d}/${e}-${c.length}-${g}`
   return id
 }
