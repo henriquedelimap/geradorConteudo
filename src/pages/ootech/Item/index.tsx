@@ -46,7 +46,7 @@ export const Item = (props: Props) => {
         <Paper elevation={0} sx={{ width: '100%', border: checked.indexOf(index) !== -1 ? '1px solid #0066cc' : '1px solid transparent', borderRadius: checked.indexOf(index) !== -1 ? '.4rem 0 0 .4rem' : '.4rem' }}>
 
           <Stack direction='row' alignItems='center' justifyContent='stretch' sx={{ p: 2, pr: 0, height: '100%' }} >
-            <Stack sx={{ height: '100%', width: 80, maxHeight: 80 }} justifyContent='space-around'  >
+            <Stack sx={{ height: '100%', width: { xs: 80, md: 120, lg: 120 }, maxHeight: 80 }} justifyContent='space-around'  >
               <Typography variant={'body2'} >
                 {item.area}
               </Typography>
