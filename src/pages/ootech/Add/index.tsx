@@ -40,7 +40,7 @@ export const AddForm = (props: Props) => {
     return (
 
         <Stack
-            direction='row'
+            direction={{ xs: 'column', md: 'row', lg: 'row' }}
             sx={{
                 position: 'sticky',
                 top: 0,
@@ -56,8 +56,11 @@ export const AddForm = (props: Props) => {
             spacing={2}
         >
             <SelectAdd areas={areas} itemXarea={itemXarea} temas={temas} itemXtema={itemXtema} toggleValue={toggleValue} setToggleValue={setToggleValue} areaToggleValue={areaToggleValue} setAreaToggleValue={setAreaToggleValue} />
-            <InAdd inputValue={inputValue} setInputValue={setInputValue} />
-            <BtnAdd setEnvio={setEnvio} inputValue={inputValue} toggleValue={toggleValue} areaToggleValue={areaToggleValue} />
+            <Stack direction='row'>
+
+                <InAdd inputValue={inputValue} setInputValue={setInputValue} />
+                <BtnAdd setEnvio={setEnvio} inputValue={inputValue} toggleValue={toggleValue} areaToggleValue={areaToggleValue} />
+            </Stack>
         </Stack>
     )
 }

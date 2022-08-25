@@ -50,7 +50,7 @@ export const SelectAdd = (props: Props) => {
     })
 
     return (
-        <Stack direction={{ xs: 'column', md: 'row', lg: 'row' }} sx={{ width: '100%' }} spacing={2}>
+        <Stack direction='row' sx={{ width: '100%' }} spacing={2}>
             <Autocomplete
                 value={areaToggleValue}
 
