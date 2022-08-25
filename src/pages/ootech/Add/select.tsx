@@ -69,7 +69,7 @@ export const SelectAdd = (props: Props) => {
 
                     options={options}
                     freeSolo
-                    renderInput={(params) => <TextField {...params} label="ii" />}
+                    renderInput={(params) => <TextField {...params} label="área" />}
                 />
 
             </div>
@@ -93,7 +93,7 @@ export const SelectAdd = (props: Props) => {
                     options={options}
                     freeSolo
                     sx={{ width: '6rem' }}
-                    renderInput={(params) => <TextField {...params} label="ii" />}
+                    renderInput={(params) => <TextField {...params} label="tema" />}
                 />
 
             </div>

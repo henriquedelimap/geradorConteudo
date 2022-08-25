@@ -14,10 +14,6 @@ export const InAdd = (props: Props) => {
                 label="frase"
                 size='small'
                 onChange={(e) => setInputValue(e.target.value)}
-                sx={{
-                    borderRadius: '1rem',
-                    height: 44
-                }}
             />
         </FormControl>
     )
