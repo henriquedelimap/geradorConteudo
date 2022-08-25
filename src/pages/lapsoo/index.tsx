@@ -185,7 +185,7 @@ export const LapsooPage = () => {
 
 
                         <Modal sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} open={openLogin} onClose={() => setOpenLogin(!openLogin)}>
-                            <Slide in={openLogin} direction='down'>
+                            <Fade in={openLogin} >
                                 <Stack
                                     alignItems='center'
                                     justifyContent='space-between'
@@ -220,7 +220,7 @@ export const LapsooPage = () => {
                                     <OOLogo />
                                 </Stack>
 
-                            </Slide>
+                            </Fade>
                         </Modal>
 
 
