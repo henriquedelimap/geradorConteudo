@@ -1,4 +1,4 @@
-import { Button, Grid, IconButton, OutlinedInput, Typography, Stack, Box, Paper, Chip, ToggleButtonGroup, ToggleButton, Select, SelectChangeEvent, MenuItem, ListItemText, FormControl, InputLabel, Collapse, Fade, Slide, CircularProgress } from '@mui/material'
+import { Button, Grid, IconButton, OutlinedInput, Typography, Stack, Box, Paper, Chip, ToggleButtonGroup, ToggleButton, Select, SelectChangeEvent, MenuItem, ListItemText, FormControl, InputLabel, Collapse, Fade, Slide, CircularProgress, Modal, FormControlLabel } from '@mui/material'
 import styled from "@emotion/styled";
 import { MdDone, MdReplay } from 'react-icons/md'
 import { useEffect, useState } from 'react'
@@ -182,39 +182,51 @@ export const LapsooPage = () => {
                                 <Typography sx={{ textTransform: 'lowercase' }} noWrap align='right' fontFamily='Outfit'>contribuir</Typography>
                             </Button>
                         </Grid>
-                        <Grid sx={{ overflow: 'hidden', height: '6vh' }} item container justifyContent='center' xs={12}>
 
 
-                            <Collapse in={openLogin}>
-                                <Slide in={openLogin} direction='down'>
+                        <Modal sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} open={openLogin} onClose={() => setOpenLogin(!openLogin)}>
+                            <Slide in={openLogin} direction='down'>
+                                <Stack
+                                    alignItems='center'
+                                    justifyContent='space-between'
+                                    sx={{
+                                        height: '100%',
+                                        width: '40%',
+                                        pb: 4.6,
+                                        pt: 10.8,
+                                        background: 'rgba(232, 245, 255, 0.41)',
+                                        backdropFilter: 'blur(12px)',
+                                        boxShadow: '0px 0px 100px -40px #ffffffaf'
+                                    }}
+                                >
+                                    <LapsooLogo />
 
 
-                                    <Paper
-                                        elevation={0}
-                                        sx={{ zIndex: 100, }}
+                                    <Stack
+                                        spacing={2}
                                     >
-                                        <Grid container
-                                            alignItems='center'
-                                            columnSpacing={2}
-                                            sx={{
-                                                height: '6vh',
-                                                p: 0
-                                            }}>
-                                            <Grid item>
 
-                                                <OutlinedInput size='small'></OutlinedInput>
-                                            </Grid>
-                                            <Grid item>
+                                        <FormControl>
+                                            <OutlinedInput size='small' />
+                                        </FormControl>
 
-                                                <OutlinedInput size='small'></OutlinedInput>
-                                            </Grid>
-                                        </Grid>
-                                    </Paper>
-                                </Slide>
-                            </Collapse>
+                                        <FormControl>
+                                            <OutlinedInput size='small' />
+
+                                        </FormControl>
+                                        <Button>
+                                            <Typography>
+                                                acessar
+                                            </Typography>
+                                        </Button>
+                                    </Stack>
+                                    <OOLogo />
+                                </Stack>
+
+                            </Slide>
+                        </Modal>
 
 
-                        </Grid>
                         <Grid item container justifyContent='center' xs={12}>
                             <OOLogo />
                         </Grid>

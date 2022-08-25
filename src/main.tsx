@@ -6,7 +6,18 @@ import ReactDOM from 'react-dom/client'
 import { Rotas } from './Rotas'
 
 
-let theme = createTheme()
+let theme = createTheme({
+  components: {
+    MuiBackdrop: {
+      styleOverrides: {
+        root: {
+
+          background: 'linear-gradient(90deg, rgba(255,255,255,1) 40%, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 68%)'
+        }
+      }
+    }
+  }
+})
 
 theme = responsiveFontSizes(theme)
 
