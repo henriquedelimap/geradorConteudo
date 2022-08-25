@@ -17,7 +17,7 @@ export function Query(getFrases: DocumentNode) {
         return <p>Loading...</p>
     }
     if (error) {
-        return <p>erro :/</p>
+        return <p>erro :/ </p>
     }
     // console.log(data, "visitando aqui o dado");
 

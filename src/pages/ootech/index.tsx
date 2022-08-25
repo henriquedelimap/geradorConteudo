@@ -57,7 +57,6 @@ export const OOTechPage = () => {
     if (currentIndex === -1) {
       newChecked.push(value);
     } else {
-      newChecked.splice(currentIndex, 1);
     }
     setChecked(newChecked);
   };
@@ -93,7 +92,7 @@ export const OOTechPage = () => {
         }}>
         <Stack spacing={.8} sx={{ p: { xs: .5, md: 2, lg: 2 } }} >
           {
-            data.frases?.slice(0).reverse().map((item: IFrase, index: number) => (
+            data.frases?.slice(-40).reverse().map((item: IFrase, index: number) => (
               <Item key={item.myId} handleToggle={handleToggle} index={index} checked={checked} item={item} />
             ))
           }

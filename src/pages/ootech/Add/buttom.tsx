@@ -26,7 +26,7 @@ export const BtnAdd = (props: Props) => {
     )
 
     if (loading) return <CircularProgress />
-    if (error) return <p>erro :/</p>
+    if (error) return <p>erro :/{error.message}</p>
     if (!!data) return <IconButton
         onClick={() => {
             setEnvio(!!data)
