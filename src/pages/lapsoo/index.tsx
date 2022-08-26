@@ -10,227 +10,200 @@ import { GenerateButton } from './Button';
 import { SelectFilter } from '../../components/Seletores';
 import { useQuery } from '@apollo/client';
 import { IFrase } from '../../Type/index.js';
+import { Login } from './Login'
+import { useNavigate } from 'react-router-dom';
 
 
 
 export const LapsooPage = () => {
 
-    const [gerado, setGerado] = useState<IFrase | null>(null)
-    const [temaValue, setTemaValue] = useState('')
-    const [areaValue, setAreaValue] = useState('')
-    const [openLogin, setOpenLogin] = useState(false)
-    const link = `https://www.instagram.com/lapsootechnology/`
+  const [gerado, setGerado] = useState<IFrase | null>(null)
+  const [temaValue, setTemaValue] = useState('')
+  const [areaValue, setAreaValue] = useState('')
+  const [openLogin, setOpenLogin] = useState(false)
+  const link = `https://www.instagram.com/lapsootechnology/`
 
-    const filtraReapetidos = (arr: string[]) => {
-        return arr?.filter((este, i) => arr.indexOf(este) === i)
-    }
+  const filtraReapetidos = (arr: string[]) => {
+    return arr?.filter((este, i) => arr.indexOf(este) === i)
+  }
+  const navigate = useNavigate()
 
-    const { loading, error, data } = useQuery(GET_FRASES)
-    if (loading) {
-        return <Stack alignItems='center' justifyContent='center' sx={{ width: '100vw', height: '100vh' }}>
-            <CircularProgress />
-        </Stack>
-    }
-    if (error) {
-        return <p>erro :/</p>
-    }
+  const { loading, error, data } = useQuery(GET_FRASES)
+  if (loading) {
+    return <Stack alignItems='center' justifyContent='center' sx={{ width: '100vw', height: '100vh' }}>
+      <CircularProgress />
+    </Stack>
+  }
+  if (error) {
+    return <p>erro :/</p>
+  }
 
-    let total = data?.frases?.map((item: IFrase) => item).filter((i: IFrase) => i)
+  let total = data?.frases?.map((item: IFrase) => item).filter((i: IFrase) => i)
 
-    let areas = filtraReapetidos(data?.frases?.map((item: IFrase) => item.area))
+  let areas = filtraReapetidos(data?.frases?.map((item: IFrase) => item.area))
 
-    let itemXarea = data?.frases?.map((item: IFrase) => item.area === areaValue ? item : '').filter((i: any) => i)
+  let itemXarea = data?.frases?.map((item: IFrase) => item.area === areaValue ? item : '').filter((i: any) => i)
 
-    let temas = filtraReapetidos(itemXarea?.map((item: IFrase) => item.tema))
+  let temas = filtraReapetidos(itemXarea?.map((item: IFrase) => item.tema))
 
-    let itemXtema = data?.frases?.map((item: IFrase) => item.tema === temaValue ? item : '').filter((i: any) => i)
+  let itemXtema = data?.frases?.map((item: IFrase) => item.tema === temaValue ? item : '').filter((i: any) => i)
 
-    let exibeValor = areaValue != '' && temaValue != ''
-        ? itemXtema
-        : areaValue != ''
-            ? itemXarea
-            : total
+  let exibeValor = areaValue != '' && temaValue != ''
+    ? itemXtema
+    : areaValue != ''
+      ? itemXarea
+      : total
 
 
-    const aleatorio = Math.floor(Math.random() * exibeValor?.length)
+  const aleatorio = Math.floor(Math.random() * exibeValor?.length)
 
-    function handleConteudo() {
+  function handleConteudo() {
 
-        setGerado(prev => prev === exibeValor[aleatorio] ? exibeValor[aleatorio + 1] : areaValue === '' ? total[aleatorio] : exibeValor[aleatorio])
-    }
+    setGerado(prev => prev === exibeValor[aleatorio] ? exibeValor[aleatorio + 1] : areaValue === '' ? total[aleatorio] : exibeValor[aleatorio])
+  }
 
-    function handleChange(event: SelectChangeEvent) {
-        setTemaValue(event.target.value as string)
-    }
-    function handleChangeArea(event: SelectChangeEvent) {
-        setAreaValue(event.target.value as string)
-    }
-    return (
-        <Box
+  function handleChange(event: SelectChangeEvent) {
+    setTemaValue(event.target.value as string)
+  }
+  function handleChangeArea(event: SelectChangeEvent) {
+    setAreaValue(event.target.value as string)
+  }
+  return (
+    <Box
+      sx={{
+        position: 'relative'
+      }}>
+      <Paper
+        elevation={4}
+        sx={{
+          overflow: 'hidden',
+          position: 'relative',
+          zIndex: '100',
+          borderRadius: '0'
+        }}>
+        <Grid
+          container
+          alignItems='center'
+          justifyContent='space-between'
+          sx={{
+            width: '100vw',
+            height: '100vh'
+          }}>
+          {/* CONTEÚDO */}
+          <Grid
+            item
+            xs={12}
+            container
             sx={{
-                position: 'relative'
+              width: '100vw',
+              height: '50vh',
+              overflow: 'hidden'
+            }}
+            justifyContent='center'
+            alignItems='center'
+          >
+            <Typography
+              sx={{
+                p: {
+                  lg: 2,
+                  md: 2,
+                  xs: 1
+                }
+              }}
+              align={'center'}
+              variant={'h6'}
+              fontWeight={300}
+              fontFamily='Outfit'
+            >
+
+
+              {
+                gerado === null
+                  ? <LapsooLogo />
+                  : gerado === undefined
+                    ? '🤖​'
+                    : gerado.quote.toLowerCase()
+              }
+            </Typography>
+          </Grid>
+          {/* GERAR CONTEÚDO */}
+          <Grid
+            item
+            container
+            direction='row'
+            alignItems='start'
+            justifyContent='center'
+            xs={12}
+            sx={{
+              height: '50vh',
+              pb: 12
+            }} >
+            <Grid item container alignItems='center' justifyContent='center' xs={12} sx={{ height: '8vh' }}>
+              <GenerateButton handleConteudo={handleConteudo} text={'gerar conteúdo'} />
+            </Grid>
+            <Grid container justifyContent='center' item xs={12} sx={{ height: '15vh', width: '100vw' }}>
+              <Stack spacing={3.2} sx={{ minWidth: '12rem' }}>
+                <SelectFilter toggleValue={areaValue} handleChange={handleChangeArea} filtros={areas}
+                  selectLabel={'filtrar por área'} />
+                {!!areaValue ? <SelectFilter toggleValue={temaValue} handleChange={handleChange} filtros={temas}
+                  selectLabel={'filtrar por tema'} /> : ''}
+              </Stack>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Paper>
+
+      {/* FOOTER */}
+
+      <Sticky
+        bottom={0}
+        index={1}>
+        <Paper
+          elevation={8}
+        >
+          <Grid container
+            alignItems='center'
+            sx={{
+              minHeight: '28vh',
+              width: '100%',
+              p: 2
+
             }}>
-            <Paper
-                elevation={4}
-                sx={{
-                    overflow: 'hidden',
-                    position: 'relative',
-                    zIndex: '100',
-                    borderRadius: '0'
-                }}>
-                <Grid
-                    container
-                    alignItems='center'
-                    justifyContent='space-between'
-                    sx={{
-                        width: '100vw',
-                        height: '100vh'
-                    }}>
-                    {/* CONTEÚDO */}
-                    <Grid
-                        item
-                        xs={12}
-                        container
-                        sx={{
-                            width: '100vw',
-                            height: '50vh',
-                            overflow: 'hidden'
-                        }}
-                        justifyContent='center'
-                        alignItems='center'
-                    >
-                        <Typography
-                            sx={{
-                                p: {
-                                    lg: 2,
-                                    md: 2,
-                                    xs: 1
-                                }
-                            }}
-                            align={'center'}
-                            variant={'h6'}
-                            fontWeight={300}
-                            fontFamily='Outfit'
-                        >
+
+            {/* LOGIN */}
+
+            <Grid item container justifyContent='center' xs={6}>
+              {!!localStorage.getItem("user")
+                ? <Button onClick={() => navigate('/adm')} >
+                  <Typography sx={{ textTransform: 'lowercase' }} fontFamily='Outfit'>editar</Typography>
+                </Button>
+                : <Button onClick={() => setOpenLogin(!openLogin)} >
+                  <Typography sx={{ textTransform: 'lowercase' }} fontFamily='Outfit'>login</Typography>
+                </Button>}
+
+            </Grid>
+
+            {/* CONTRIBUIR */}
+
+            <Grid item container justifyContent='center' xs={6}>
+              <Button href={link}>
+                <Typography sx={{ textTransform: 'lowercase' }} noWrap align='right' fontFamily='Outfit'>contribuir</Typography>
+              </Button>
+            </Grid>
 
 
-                            {
-                                gerado === null
-                                    ? <LapsooLogo />
-                                    : gerado === undefined
-                                        ? '🤖​'
-                                        : gerado.quote.toLowerCase()
-                            }
-                        </Typography>
-                    </Grid>
-                    {/* GERAR CONTEÚDO */}
-                    <Grid
-                        item
-                        container
-                        direction='row'
-                        alignItems='start'
-                        justifyContent='center'
-                        xs={12}
-                        sx={{
-                            height: '50vh',
-                            pb: 12
-                        }} >
-                        <Grid item container alignItems='center' justifyContent='center' xs={12} sx={{ height: '8vh' }}>
-                            <GenerateButton handleConteudo={handleConteudo} text={'gerar conteúdo'} />
-                        </Grid>
-                        <Grid container justifyContent='center' item xs={12} sx={{ height: '15vh', width: '100vw' }}>
-                            <Stack spacing={3.2} sx={{ minWidth: '12rem' }}>
-                                <SelectFilter toggleValue={areaValue} handleChange={handleChangeArea} filtros={areas}
-                                    selectLabel={'filtrar por área'} />
-                                {!!areaValue ? <SelectFilter toggleValue={temaValue} handleChange={handleChange} filtros={temas}
-                                    selectLabel={'filtrar por tema'} /> : ''}
-                            </Stack>
-                        </Grid>
-                    </Grid>
-                </Grid>
-            </Paper>
-
-            {/* FOOTER */}
-
-            <Sticky
-                bottom={0}
-                index={1}>
-                <Paper
-                    elevation={8}
-                >
-                    <Grid container
-                        alignItems='center'
-                        sx={{
-                            minHeight: '28vh',
-                            width: '100%',
-                            p: 2
-
-                        }}>
-
-                        {/* LOGIN */}
-
-                        <Grid item container justifyContent='center' xs={6}>
-                            <Button onClick={() => setOpenLogin(!openLogin)} >
-                                <Typography sx={{ textTransform: 'lowercase' }} fontFamily='Outfit'>login</Typography>
-                            </Button>
-                        </Grid>
-
-                        {/* CONTRIBUIR */}
-
-                        <Grid item container justifyContent='center' xs={6}>
-                            <Button href={link}>
-                                <Typography sx={{ textTransform: 'lowercase' }} noWrap align='right' fontFamily='Outfit'>contribuir</Typography>
-                            </Button>
-                        </Grid>
+            <Login openLogin={openLogin} setOpenLogin={setOpenLogin} />
 
 
-                        <Modal sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} open={openLogin} onClose={() => setOpenLogin(!openLogin)}>
-                            <Stack
-                                alignItems='center'
-                                justifyContent='space-between'
-                                sx={{
-                                    height: '100%',
-                                    width: { xs: '70%', md: '40%', lg: '40%' },
-                                    pb: 5,
-                                    pt: 10.8,
-                                    background: 'rgba(232, 245, 255, 0.41)',
-                                    backdropFilter: 'blur(8px)',
-                                }}
-                            >
-                                <LapsooLogo />
-                                <Stack
-                                    spacing={2}
-                                >
+            <Grid item container justifyContent='center' xs={12}>
+              <OOLogo />
+            </Grid>
 
-                                    <FormControl>
-                                        <OutlinedInput size='small' />
-                                    </FormControl>
-
-                                    <FormControl>
-                                        <OutlinedInput size='small' />
-
-                                    </FormControl>
-                                    <Button>
-                                        <Typography>
-                                            acessar
-                                        </Typography>
-                                    </Button>
-                                </Stack>
-                                <OOLogo />
-                            </Stack>
-
-                        </Modal>
+          </Grid>
+        </Paper>
+      </Sticky>
 
 
-                        <Grid item container justifyContent='center' xs={12}>
-                            <OOLogo />
-                        </Grid>
-
-                    </Grid>
-                </Paper>
-            </Sticky>
-
-
-        </Box >
-    )
+    </Box >
+  )
 }

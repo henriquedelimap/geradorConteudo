@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
-import { Box, Button, Checkbox, CircularProgress, Collapse, Divider, Fade, FormControl, Grid, IconButton, InputLabel, List, ListItem, ListItemButton, ListItemText, OutlinedInput, Paper, SelectChangeEvent, Stack, Typography } from "@mui/material"
+import { Box, Fab, Button, Checkbox, CircularProgress, Collapse, Divider, Fade, FormControl, Grid, IconButton, InputLabel, List, ListItem, ListItemButton, ListItemText, OutlinedInput, Paper, SelectChangeEvent, Stack, Typography } from "@mui/material"
 import { useEffect, useState } from "react";
-import { MdAdd, MdArrowDownward, MdCreate, MdDelete, MdEdit, MdRemove } from "react-icons/md"
+import { MdAdd, MdArrowDownward, MdCreate, MdDelete, MdEdit, MdLogout, MdRemove } from "react-icons/md"
 import { GET_FRASES, Query } from "../../API/GET/get.js";
 import { SelectFilter } from "../../components/Seletores/index.js";
 import { Sticky } from '../../Style/index.js';
@@ -104,6 +104,11 @@ export const OOTechPage = () => {
           <MdArrowDownward fontSize={40} />
         </IconButton>
       </Grid>
+
+      <Fab onClick={() => localStorage.removeItem('user')} color='error' size='small' sx={{ position: 'fixed', bottom: 16, right: 16 }} >
+        <MdLogout fontSize={18} />
+      </Fab>
+
     </Grid >
   )
 }

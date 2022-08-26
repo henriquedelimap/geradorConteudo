@@ -12,7 +12,8 @@ let theme = createTheme({
       styleOverrides: {
         root: {
 
-          background: 'linear-gradient(90deg, rgba(255,255,255,1) 40%, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 68%)'
+          background: 'rgba(255, 255, 255, 0.032)',
+          backdropFilter: 'blur(.064rem)',
         }
       }
     }
