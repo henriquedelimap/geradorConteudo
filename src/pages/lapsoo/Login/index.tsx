@@ -31,7 +31,7 @@ export const Login = (props: Props) => {
     const [inPassword, setInPassword] = useState('')
     const navigate = useNavigate()
 
-    if (!!localStorage.getItem('user')) return setOpenLogin(false)
+    if (!!localStorage.getItem('user')) setOpenLogin(false)
     return (
         <Modal
             sx={{
