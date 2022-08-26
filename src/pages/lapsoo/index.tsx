@@ -13,10 +13,7 @@ import { IFrase } from '../../Type/index.js';
 import { Login } from './Login'
 import { useNavigate } from 'react-router-dom';
 
-
-
 export const LapsooPage = () => {
-
   const [gerado, setGerado] = useState<IFrase | null>(null)
   const [temaValue, setTemaValue] = useState('')
   const [areaValue, setAreaValue] = useState('')

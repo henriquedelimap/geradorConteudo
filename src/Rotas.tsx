@@ -48,7 +48,7 @@ export function Rotas() {
         <Route index element={<LapsooPage />} />
         {!!localStorage.getItem("user")
           ? <Route path='adm' element={<OOTechPage />} />
-          : <Route path='*' element={<LapsooPage />} />}
+          : <Route path='*' element={<LapsooPage />}
 
       </Routes>
     </Router>

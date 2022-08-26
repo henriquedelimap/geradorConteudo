@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/client";
 import { Box, Fab, Button, Checkbox, CircularProgress, Collapse, Divider, Fade, FormControl, Grid, IconButton, InputLabel, List, ListItem, ListItemButton, ListItemText, OutlinedInput, Paper, SelectChangeEvent, Stack, Typography } from "@mui/material"
 import { useEffect, useState } from "react";
 import { MdAdd, MdArrowDownward, MdCreate, MdDelete, MdEdit, MdLogout, MdRemove } from "react-icons/md"
+import { useNavigate } from "react-router-dom";
 import { GET_FRASES, Query } from "../../API/GET/get.js";
 import { SelectFilter } from "../../components/Seletores/index.js";
 import { Sticky } from '../../Style/index.js';
@@ -13,7 +14,7 @@ import { Item } from "./Item/index.js";
 export const OOTechPage = () => {
   const [envio, setEnvio] = useState(false)
   const [checked, setChecked] = useState([9999]);
-
+  const navigate = useNavigate()
 
 
   const { loading, error, data } = useQuery(GET_FRASES)
@@ -105,7 +106,10 @@ export const OOTechPage = () => {
         </IconButton>
       </Grid>
 
-      <Fab onClick={() => localStorage.removeItem('user')} color='error' size='small' sx={{ position: 'fixed', bottom: 16, right: 16 }} >
+      <Fab onClick={() => {
+        localStorage.removeItem('user')
+        navigate('/')
+      }} color='error' size='small' sx={{ position: 'fixed', bottom: 16, right: 16 }} >
         <MdLogout fontSize={18} />
       </Fab>
 

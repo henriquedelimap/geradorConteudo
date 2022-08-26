@@ -5,7 +5,8 @@ import {
     FormControl,
     OutlinedInput,
     Button,
-    Typography
+    Typography,
+    CircularProgress
 } from "@mui/material"
 import { Dispatch, SetStateAction, useState } from "react"
 import { useNavigate } from "react-router-dom"
@@ -26,7 +27,6 @@ export const Login = (props: Props) => {
     const [inUsername, setInUsername] = useState('')
     const [inPassword, setInPassword] = useState('')
     const navigate = useNavigate()
-
     return (
         <Modal
             sx={{
@@ -35,16 +35,16 @@ export const Login = (props: Props) => {
                 justifyContent: 'center'
             }}
             open={openLogin}
-            onClose={() => setOpenLogin(!openLogin)}>
+            onClose={() => setOpenLogin(false)}>
             <Stack
                 alignItems='center'
                 justifyContent='space-between'
                 sx={{
                     height: '100%',
-                    width: { xs: '70%', md: '40%', lg: '40%' },
+                    width: { xs: '80%', md: '40%', lg: '40%' },
                     pb: 5,
                     pt: 10.8,
-                    background: 'rgba(232, 245, 255, 0.41)',
+                    background: 'rgba(232, 245, 255, 0.64)',
                     backdropFilter: 'blur(8px)',
                 }}
             >
@@ -55,12 +55,13 @@ export const Login = (props: Props) => {
                     : <Stack
                         spacing={2}
                     >
-                        {!!error ? error.message : ''} <FormControl>
-                            <OutlinedInput onChange={(e) => setInUsername(e.target.value)} size='small' />
+                        {!!error ? error.message : ''}
+                        <FormControl id='user'>
+                            <OutlinedInput id='user' onChange={(e) => setInUsername(e.target.value)} size='small' />
                         </FormControl>
 
-                        <FormControl>
-                            <OutlinedInput onChange={(e) => setInPassword(e.target.value)} size='small' />
+                        <FormControl id='pass'>
+                            <OutlinedInput id='pass' type='password' onChange={(e) => setInPassword(e.target.value)} size='small' />
                         </FormControl>
                         <Button onClick={() => {
                             signIn({
@@ -70,7 +71,8 @@ export const Login = (props: Props) => {
                                 }
                             })
                             if (!!data) {
-                                return localStorage.setItem("user", JSON.stringify(data.signIn.token))
+                                navigate('/adm')
+                                localStorage.setItem("user", JSON.stringify(data.signIn.token))
                             }
                         }}
                         >

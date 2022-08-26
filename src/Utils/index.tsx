@@ -1,3 +1,4 @@
+
 export const padronizaTexto = (text: string) => {
   const a = 'àáäâãèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;'
   const b = 'aaaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------'
@@ -17,7 +18,6 @@ export const Id = (a: string, b: string, c: string) => {
   const id = `${d}/${e}-${c.length}-${g}`
   return id
 }
-
 
 // export const adiciona = () => {
 //     // console.log(filtros.imobiliaria.map(item => item.quotes))
