@@ -32,7 +32,7 @@ export const useUserContext = () => {
     const [userAuth, setUserAuth] = useState<any>()
     const [signIn, { error, loading, data }] = useMutation(SIGN_IN, {
         onCompleted() {
-            if (!!!error) window.location.reload()
+            if (localStorage.getItem('user') !== 'undefined') window.location.reload()
         }
     })
 
@@ -46,14 +46,15 @@ export const useUserContext = () => {
                 password: inPassword
             }
         })
+
+        console.log(data?.signIn.token);
         if (!!!error) {
             localStorage.setItem('user', data?.signIn.token)
-            return setUserAuth(!!data?.signIn.token)
         }
     }
 
     useEffect(() => {
-        setUserAuth(!!localStorage.getItem('user'))
+        localStorage.getItem('user') === 'undefined' ? setUserAuth(false) : localStorage.getItem('user') === null ? setUserAuth(false) : setUserAuth(true)
     }, [])
     const logout = () => {
 

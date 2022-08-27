@@ -33,7 +33,7 @@ export const Login = (props: Props) => {
     const navigate = useNavigate()
 
     const { login, userAuth, error } = useUserContext()
-    console.log(!!localStorage.getItem('user'));
+    console.log('local sotrage? ', localStorage.getItem('user') == null);
 
     return (
         <Modal
