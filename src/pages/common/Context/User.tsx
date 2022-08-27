@@ -1,5 +1,6 @@
 import { useMutation } from "@apollo/client";
 import { Children, createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { SIGN_IN } from "../../../API/SIGNIN/signin";
 export interface IAuthContext {
     authenticated: boolean
@@ -28,30 +29,37 @@ export const AuthProvider = (prop: Prop) => {
 
 
 export const useUserContext = () => {
-    const [signIn, { error, loading, data }] = useMutation(SIGN_IN)
+    const [userAuth, setUserAuth] = useState<any>()
+    const [signIn, { error, loading, data }] = useMutation(SIGN_IN, {
+        onCompleted() {
+            if (!!!error) window.location.reload()
+        }
+    })
 
-    const [userAuth, setUserAuth] = useState(false)
+
 
     const login = (inUsername?: string, inPassword?: string) => {
+
         signIn({
             variables: {
                 username: inUsername,
                 password: inPassword
             }
         })
-        localStorage.setItem("user", JSON.stringify(data?.signIn?.token))
-        let auth = !!localStorage.getItem('user') ? localStorage.getItem('user') : data
-
-        setUserAuth(!!auth)
+        if (!!!error) {
+            localStorage.setItem('user', data?.signIn.token)
+            return setUserAuth(!!data?.signIn.token)
+        }
     }
+
     useEffect(() => {
         setUserAuth(!!localStorage.getItem('user'))
-    }, [!!localStorage.getItem('user')])
+    }, [])
     const logout = () => {
 
     }
 
     return {
-        userAuth, login, logout
+        userAuth, login, logout, error
     }
 }

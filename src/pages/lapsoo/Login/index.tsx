@@ -27,14 +27,14 @@ interface Props {
 
 export const Login = (props: Props) => {
     const { openLogin, setOpenLogin } = props
-    const [signIn, { loading, error, data }] = useMutation(SIGN_IN)
+
     const [inUsername, setInUsername] = useState('')
     const [inPassword, setInPassword] = useState('')
     const navigate = useNavigate()
 
-    const { login } = useUserContext()
+    const { login, userAuth, error } = useUserContext()
+    console.log(!!localStorage.getItem('user'));
 
-    if (!!localStorage.getItem('user')) setOpenLogin(false)
     return (
         <Modal
             sx={{
@@ -67,27 +67,40 @@ export const Login = (props: Props) => {
                 >
                     <LapsooLogo />
 
+                    <Stack
+                        spacing={2}
+                    >
+                        <Typography variant='subtitle2' color='error'>
 
-                    {!!loading ? ''
-                        : <Stack
-                            spacing={2}
-                        >
                             {!!error ? error.message : ''}
-                            <FormControl id='user'>
-                                <OutlinedInput id='user' onChange={(e) => setInUsername(e.target.value)} size='small' />
-                            </FormControl>
+                        </Typography>
+                        <FormControl id='user'>
+                            <OutlinedInput
+                                error={!!error}
+                                id='user'
+                                onChange={(e) => setInUsername(e.target.value)}
+                                size='small' />
+                        </FormControl>
 
-                            <FormControl id='pass'>
-                                <OutlinedInput id='pass' type='password' onChange={(e) => setInPassword(e.target.value)} size='small' />
-                            </FormControl>
-                            <Button onClick={() => login(inUsername, inPassword)} >
-                                <Typography>
-                                    acessar
-                                </Typography>
-                            </Button >
+                        <FormControl id='pass'>
+                            <OutlinedInput
+                                error={!!error}
+                                id='pass'
+                                type='password'
+                                onChange={(e) => setInPassword(e.target.value)}
+                                size='small' />
+                        </FormControl>
+                        <Button onClick={() => {
+                            login(inUsername, inPassword)
+                            navigate('/adm')
+                        }} >
+                            <Typography>
+                                acessar
+                            </Typography>
+                        </Button >
 
-                        </Stack>
-                    }
+                    </Stack>
+
                     <OOLogo />
                 </Stack>
             </Box>
