@@ -12,7 +12,7 @@ import { useQuery } from '@apollo/client';
 import { IFrase } from '../../Type/index.js';
 import { Login } from './Login'
 import { useNavigate } from 'react-router-dom';
-import { useUserContext } from '../common/Context/User.js';
+import { useUserContext } from '../../common/Context/User.js';
 
 export const LapsooPage = () => {
   const [gerado, setGerado] = useState<IFrase | null>(null)

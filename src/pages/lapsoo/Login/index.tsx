@@ -18,7 +18,7 @@ import {
     LapsooLogo,
     OOLogo
 } from "../../../OOTECHNOLOGY"
-import { AuthContext, IAuthContext, useUserContext } from "../../common/Context/User"
+import { AuthContext, IAuthContext, useUserContext } from "../../../common/Context/User"
 
 interface Props {
     openLogin: boolean

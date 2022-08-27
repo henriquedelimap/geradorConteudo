@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
 import { Children, createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { SIGN_IN } from "../../../API/SIGNIN/signin";
+import { SIGN_IN } from "../../API/SIGNIN/signin";
 export interface IAuthContext {
     authenticated: boolean
     user: any

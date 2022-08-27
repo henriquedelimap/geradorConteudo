@@ -7,7 +7,7 @@ import { GET_FRASES, Query } from "../../../API/GET/get.js";
 import { SelectFilter } from "../../../components/Seletores/index.js";
 import { Sticky } from '../../../Style/index.js';
 import { IFrase } from "../../../Type/index.js";
-import { filtraReapetidos } from "../../common/index.js";
+import { filtraReapetidos } from "../../../common/index.js";
 import { AddForm } from "../Add/index.js";
 import { Item } from "../Item/index.js";
 

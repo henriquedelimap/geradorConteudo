@@ -4,7 +4,7 @@ import { useState, Dispatch, SetStateAction, useEffect, SyntheticEvent } from "r
 import { GET_FRASES } from "../../../API/GET/get"
 import { SelectFilter } from "../../../components/Seletores"
 import { IFrase } from "../../../Type"
-import { filtraReapetidos } from "../../common"
+import { filtraReapetidos } from "../../../common"
 
 interface Props {
     toggleValue: string
