@@ -18,7 +18,7 @@ import {
     LapsooLogo,
     OOLogo
 } from "../../../OOTECHNOLOGY"
-import { AuthContext, IAuthContext } from "../../common/Context/User"
+import { AuthContext, IAuthContext, useUserContext } from "../../common/Context/User"
 
 interface Props {
     openLogin: boolean
@@ -32,8 +32,8 @@ export const Login = (props: Props) => {
     const [inPassword, setInPassword] = useState('')
     const navigate = useNavigate()
 
+    const { login } = useUserContext()
 
-    const { authenticated, login } = useContext(AuthContext) as IAuthContext
     if (!!localStorage.getItem('user')) setOpenLogin(false)
     return (
         <Modal

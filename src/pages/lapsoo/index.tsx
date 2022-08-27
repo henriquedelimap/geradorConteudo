@@ -12,6 +12,7 @@ import { useQuery } from '@apollo/client';
 import { IFrase } from '../../Type/index.js';
 import { Login } from './Login'
 import { useNavigate } from 'react-router-dom';
+import { useUserContext } from '../common/Context/User.js';
 
 export const LapsooPage = () => {
   const [gerado, setGerado] = useState<IFrase | null>(null)
@@ -19,6 +20,8 @@ export const LapsooPage = () => {
   const [areaValue, setAreaValue] = useState('')
   const [openLogin, setOpenLogin] = useState(false)
   const link = `https://www.instagram.com/lapsootechnology/`
+
+  const { userAuth } = useUserContext()
 
   const filtraReapetidos = (arr: string[]) => {
     return arr?.filter((este, i) => arr.indexOf(este) === i)
@@ -170,7 +173,7 @@ export const LapsooPage = () => {
             {/* LOGIN */}
 
             <Grid item container justifyContent='center' xs={6}>
-              {!!localStorage.getItem("user")
+              {userAuth
                 ? <Button onClick={() => navigate('/adm')} >
                   <Typography sx={{ textTransform: 'lowercase' }} fontFamily='Outfit'>editar</Typography>
                 </Button>
