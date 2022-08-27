@@ -10,6 +10,7 @@ import { IFrase } from "../../../Type/index.js";
 import { filtraReapetidos } from "../../../common/index.js";
 import { AddForm } from "../Add/index.js";
 import { Item } from "../Item/index.js";
+import { Loading } from "../../../components/loading/index.js";
 
 export const FrasesPage = () => {
     const [envio, setEnvio] = useState(false)
@@ -25,9 +26,9 @@ export const FrasesPage = () => {
 
 
     if (loading) {
-        return <Stack alignItems='center' justifyContent='center' sx={{ width: '100vw', height: '100vh' }}>
-            <CircularProgress />
-        </Stack>
+        return <Loading>
+            <Typography fontFamily='Outfit' fontWeight={200} variant='h3'>frases</Typography>
+        </Loading>
     }
     if (error) {
         return <p>erro :/</p>
@@ -106,12 +107,6 @@ export const FrasesPage = () => {
                 </IconButton>
             </Grid>
 
-            <Fab onClick={() => {
-                localStorage.removeItem('user')
-                navigate('/')
-            }} color='error' size='small' sx={{ position: 'fixed', bottom: 16, right: 16 }} >
-                <MdLogout fontSize={18} />
-            </Fab>
 
         </Grid >
     )

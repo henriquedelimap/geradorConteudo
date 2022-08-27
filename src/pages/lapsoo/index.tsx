@@ -1,4 +1,4 @@
-import { Button, Grid, IconButton, OutlinedInput, Typography, Stack, Box, Paper, Chip, ToggleButtonGroup, ToggleButton, Select, SelectChangeEvent, MenuItem, ListItemText, FormControl, InputLabel, Collapse, Fade, Slide, CircularProgress, Modal, FormControlLabel } from '@mui/material'
+import { Button, Grid, IconButton, OutlinedInput, Typography, Stack, Box, Paper, Chip, ToggleButtonGroup, ToggleButton, Select, SelectChangeEvent, MenuItem, ListItemText, FormControl, InputLabel, Collapse, Fade, Slide, CircularProgress, Modal, FormControlLabel, LinearProgress } from '@mui/material'
 import styled from "@emotion/styled";
 import { MdDone, MdReplay } from 'react-icons/md'
 import { useEffect, useState } from 'react'
@@ -13,6 +13,7 @@ import { IFrase } from '../../Type/index.js';
 import { Login } from './Login'
 import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../../common/Context/User.js';
+import { Loading } from '../../components/loading/index.js';
 
 export const LapsooPage = () => {
   const [gerado, setGerado] = useState<IFrase | null>(null)
@@ -30,9 +31,10 @@ export const LapsooPage = () => {
 
   const { loading, error, data } = useQuery(GET_FRASES)
   if (loading) {
-    return <Stack alignItems='center' justifyContent='center' sx={{ width: '100vw', height: '100vh' }}>
-      <CircularProgress />
-    </Stack>
+    return <Loading>
+      <LapsooLogo />
+    </Loading>
+
   }
   if (error) {
     return <p>erro :/</p>
