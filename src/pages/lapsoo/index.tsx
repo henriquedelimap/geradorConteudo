@@ -177,7 +177,6 @@ export const LapsooPage = () => {
                 : <Button onClick={() => setOpenLogin(!openLogin)} >
                   <Typography sx={{ textTransform: 'lowercase' }} fontFamily='Outfit'>login</Typography>
                 </Button>}
-
             </Grid>
 
             {/* CONTRIBUIR */}

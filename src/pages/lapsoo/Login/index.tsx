@@ -10,7 +10,7 @@ import {
     Box,
     IconButton
 } from "@mui/material"
-import { Dispatch, SetStateAction, useState } from "react"
+import { Dispatch, SetStateAction, useContext, useState } from "react"
 import { MdClose } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
 import { SIGN_IN } from "../../../API/SIGNIN/signin"
@@ -18,6 +18,7 @@ import {
     LapsooLogo,
     OOLogo
 } from "../../../OOTECHNOLOGY"
+import { AuthContext, IAuthContext } from "../../common/Context/User"
 
 interface Props {
     openLogin: boolean
@@ -31,7 +32,9 @@ export const Login = (props: Props) => {
     const [inPassword, setInPassword] = useState('')
     const navigate = useNavigate()
 
-    if (!!localStorage.getItem('user')) setOpenLogin(false)
+
+    const { authenticated, login } = useContext(AuthContext) as IAuthContext
+
     return (
         <Modal
             sx={{
@@ -41,7 +44,6 @@ export const Login = (props: Props) => {
             }}
             open={openLogin}
             onClose={() => setOpenLogin(false)}>
-
             <Box sx={{
                 height: '100%',
                 width: '100%',
@@ -86,8 +88,8 @@ export const Login = (props: Props) => {
                                         password: inPassword
                                     }
                                 })
+                                login(data.signIn.token)
                                 localStorage.setItem("user", JSON.stringify(data.signIn.token))
-                                navigate('/adm')
                             }}
                             >
                                 <Typography>
