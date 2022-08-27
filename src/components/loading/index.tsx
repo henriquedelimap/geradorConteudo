@@ -6,12 +6,12 @@ interface Prop {
     children: any
 }
 export const Loading = (prop: Prop) => {
-    return <>
-        <Box sx={{ width: '100vw' }} alignSelf='start'>
+    return <Stack sx={{ overflow: 'hidden' }}>
+        <Stack sx={{ width: '100%' }} alignSelf='start'>
             <LinearProgress />
-        </Box>
-        <Stack direction='column' alignItems='center' justifyContent='center' sx={{ width: '100vw', height: '100vh' }}>
+        </Stack>
+        <Stack direction='column' alignItems='center' justifyContent='center' sx={{ width: '100vw', height: '98vh' }}>
             {prop.children}
         </Stack>
-    </>
+    </Stack>
 }

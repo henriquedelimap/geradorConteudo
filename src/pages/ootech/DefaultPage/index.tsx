@@ -1,11 +1,11 @@
 import { Outlet, useNavigate } from "react-router-dom"
 import { MdLogout } from 'react-icons/md'
-import { Fab, Box } from "@mui/material"
+import { Fab, Box, Container, Stack } from "@mui/material"
 
 export const DefaultPageOOTech = () => {
     const navigate = useNavigate()
     return (
-        <Box sx={{ width: '100vw', minHeight: '100vh', position: 'relative' }}>
+        <Stack sx={{ position: 'relative' }}>
             <Outlet />
 
             <Fab onClick={() => {
@@ -14,6 +14,6 @@ export const DefaultPageOOTech = () => {
             }} color='error' size='small' sx={{ position: 'fixed', bottom: 16, right: 16 }} >
                 <MdLogout fontSize={18} />
             </Fab>
-        </ Box>
+        </ Stack>
     )
 }
