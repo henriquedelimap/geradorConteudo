@@ -34,7 +34,7 @@ export const Login = (props: Props) => {
 
 
     const { authenticated, login } = useContext(AuthContext) as IAuthContext
-
+    if (!!localStorage.getItem('user')) setOpenLogin(false)
     return (
         <Modal
             sx={{
@@ -80,18 +80,7 @@ export const Login = (props: Props) => {
                             <FormControl id='pass'>
                                 <OutlinedInput id='pass' type='password' onChange={(e) => setInPassword(e.target.value)} size='small' />
                             </FormControl>
-                            <Button onClick={(e) => {
-                                e.preventDefault()
-                                signIn({
-                                    variables: {
-                                        username: inUsername,
-                                        password: inPassword
-                                    }
-                                })
-                                login(data.signIn.token)
-                                localStorage.setItem("user", JSON.stringify(data.signIn.token))
-                            }}
-                            >
+                            <Button onClick={() => login(inUsername, inPassword)} >
                                 <Typography>
                                     acessar
                                 </Typography>

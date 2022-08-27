@@ -11,8 +11,19 @@ import { OOTechPage } from './pages/ootech'
 export function Rotas() {
   const [user, setUser] = useState<string | null>()
   const [userAuth, setUserAuth] = useState(false)
-  const login = (token: string) => {
-    let auth = !!localStorage.getItem('user') ? localStorage.getItem('user') : token
+  const [signIn, { loading, error, data }] = useMutation(SIGN_IN)
+
+  const login = (inUsername?: string, inPassword?: string) => {
+    console.log(signIn);
+    signIn({
+      variables: {
+        username: inUsername,
+        password: inPassword
+      }
+    })
+    localStorage.setItem("user", JSON.stringify(data.signIn.token))
+    let auth = !!localStorage.getItem('user') ? localStorage.getItem('user') : data
+
     setUserAuth(!!auth)
   }
   useEffect(() => {
